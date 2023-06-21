@@ -4,8 +4,6 @@ class CreateCartItems < ActiveRecord::Migration[6.1]
       t.integer :customer_id
       t.integer :item_id
       t.integer :piece
-      t.detetime :created_at
-      t.detetime :updated_at
       t.timestamps
     end
   end

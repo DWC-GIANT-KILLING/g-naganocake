@@ -6,8 +6,6 @@ class CreateOrderDetails < ActiveRecord::Migration[6.1]
       t.integer :piece
       t.integer :price
       t.integer :status
-      t.detetime :created_at
-      t.detetime :updated_at
       t.timestamps
     end
   end
