@@ -4,7 +4,7 @@
   <tr>
     <th>ジャンル名</th>
       <td><%= f.text_field :name %></td>
-      <td><%= f.submit'新規登録'  %></td>
+      <td><%= f.submit'新規登録', class: "btn btn-success" %></td>
   </tr>
 </table>
  <% end %>
@@ -16,8 +16,8 @@
      <% @genres.each do |genre| %>
      <tr>
        <td><%= genre.name %></td>
-       <td><%= link_to "編集する", edit_admin_genre_path(genre) %></td>
-       <td><%= link_to "削除する", admin_genre_path(genre), method: :delete %></td>
+       <td><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-success" %></td>
+       <td><%= link_to "削除する", admin_genre_path(genre), method: :delete, data: { confirm: '削除する？' }, class: "btn btn-sm btn-danger"%></td>
      </tr>
      <% end %>
 </table>
