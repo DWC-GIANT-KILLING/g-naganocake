@@ -15,5 +15,8 @@ class Customer < ApplicationRecord
  validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z|\A\d{3}[-]\d{2}\z|\A\d{3}\z|\A\d{5}\z|\A\d{7}\z/ }
  validates :address, presence: true
  validates :phone_number, format: { with: /\A\d{10}\z|\A\d{11}\z/ }
- 
+
+  def full_name
+    self.last_name + " " + self.first_name
+  end
 end
