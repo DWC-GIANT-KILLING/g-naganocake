@@ -25,9 +25,9 @@
           <td></td>
         </tr>
         <tr>
-          <td><%= f.label :post_code, "郵便番号(ハイフンなし)" %></td>
+          <td><%= f.label :postcode, "郵便番号(ハイフンなし)" %></td>
           <td></td>
-          <td><%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %></td>
+          <td><%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %></td>
           <td></td>
           <td></td>
         </tr>
@@ -48,9 +48,10 @@
           <td></td>
           <td><%= f.submit "編集内容を保存" %></td>
           <td></td>
-          <td><%= link_to customers_check_path do %>
-	        		  <button>退会する</button>
-	          	<% end %>
+          <td>
+            <%= link_to customers_check_path do %>
+	        		<button>退会する</button>
+	          <% end %>
 		      </td>
         </tr>
       </table>

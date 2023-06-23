@@ -2,19 +2,34 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = current_customer
-    @post_code = @customer.postcode
   end
 
   def edit
+    @customer = current_customer
   end
 
   def update
+    @customer = current_customer
+    if @customer.update(customer_params)
+      flash[:notice] = "会員情報を更新しました"
+      redirect_to customers_mypage_path
+    else
+      flash[:notice] = @customer.errors.full_messages
+      render :edit
+    end
   end
 
   def check
   end
 
   def withdraw
+  end
+
+  protected
+
+  def customer_params
+    params.require(:customer).permit(:last_name,:first_name,:last_name_kana,:first_name_kana,
+                          :postcode,:address,:phone_number,:email)
   end
 
 end

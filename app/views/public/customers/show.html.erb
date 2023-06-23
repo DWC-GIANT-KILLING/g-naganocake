@@ -24,7 +24,7 @@
 
 		<tr>
 			<td>郵便番号</td>
-			<td>〒<%= @post_code %></td>
+			<td>〒<%= @customer.postcode %></td>
 		</tr>
 		<tr>
 			<td>住所</td>
@@ -44,9 +44,9 @@
 		<tr>
 			<td><h6>配送先</h6></td>
 			<td>
-				<%#= link_to addresses_path do %><!--パスが違うのでコメントアウト-->
+				<%= link_to addresses_path do %>
 					<button>一覧を見る</button>
-				<%# end %>
+				<% end %>
 			</td>
 		</tr>
 		<tr>
