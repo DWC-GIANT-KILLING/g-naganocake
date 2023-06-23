@@ -1,2 +1,20 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<h1>商品新規登録</h1>
+ <%= form_with model: @item, url: admin_items_path  do |f| %>
+   <%= f.file_field :file_name %>
+       <td></td>
+   </tr>
+   <tr>
+     <th>商品名</th>
+     <td><%= f.text_field :name %></td>
+   </tr>
+   <tr>商品説明</tr>
+   <td><%= f.text_area :detail %></td>
+   <tr>ジャンル</tr>
+   <td><%= f.select :genre_id %></td>
+   <tr>税抜価格</tr>
+   <td><%= f.text_area :unit_price %>円</td>
+   <tr>販売ステータス</tr>
+   <td><%= f.radio_button :is_selling %></td>
+
+ </table>
+<% end %>
