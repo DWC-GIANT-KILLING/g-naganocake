@@ -30,7 +30,7 @@ Rails.application.routes.draw do
      
     resources :addresses, only: [:index,:edit,:create,:update,:destroy]
 
-   end
+ end
 
 
  # 管理者用
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
     resources :items, only: [:index,:new,:create,:show,:edit,:update]
 
-    resources :generes, only: [:index,:edit,:create,:update]
+    resources :genres, only: [:index,:edit,:create,:update,:destroy]
 
     resources :customers, only: [:index,:show,:edit,:update]
 
