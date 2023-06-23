@@ -4,9 +4,9 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  #has_many :cart_items
-  #has_many :orders
-  #has_many :addresses
+  has_many :cart_items
+  has_many :orders
+  has_many :addresses
 
  validates :last_name, presence: true
  validates :last_name_kana, format: { with: /\A[\p{katakana}\u{30fc}]+\z/, message: 'カタカナで入力してください。'}
@@ -15,4 +15,5 @@ class Customer < ApplicationRecord
  validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z|\A\d{3}[-]\d{2}\z|\A\d{3}\z|\A\d{5}\z|\A\d{7}\z/ }
  validates :address, presence: true
  validates :phone_number, format: { with: /\A\d{10}\z|\A\d{11}\z/ }
+ 
 end
