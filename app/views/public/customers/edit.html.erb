@@ -1,5 +1,6 @@
 <div>
   <h5>会員情報</h5>
+  <%= render 'layouts/error', obj: @customer %>
   <div>
     <%= form_with model: @customer, url: customers_update_path, method: :patch do |f| %>
       <table>

@@ -11,10 +11,9 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      flash[:notice] = "会員情報を更新しました"
+      flash[:notice] = "会員情報が更新されました"
       redirect_to customers_mypage_path
     else
-      flash[:notice] = @customer.errors.full_messages
       render :edit
     end
   end
@@ -23,6 +22,11 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
+    customer = current_customer
+    customer.is_deleted = false
+    customer.save
+    session.clear
+    redirect_to root_path
   end
 
   protected
