@@ -2,7 +2,7 @@
 
 <body>
   <%= form_with model: @customer, url: admin_customer_path do|f| %>
-   <table>
+   <!-table>
       <tr>
         <th>会員ID</th>
         <td><%= @customer.id%></td>
@@ -37,9 +37,9 @@
         <th>会員ステータス</th>
         <td>
           <%= f.radio_button :is_deleted, false %>
-          <%= f.label "退会"%>
-          <%= f.radio_button :is_deleted, true %>
           <%= f.label "有効"%>
+          <%= f.radio_button :is_deleted, true %>
+          <%= f.label "退会"%>
         </td>
       </tr>
       
