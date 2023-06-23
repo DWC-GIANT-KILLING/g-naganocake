@@ -1,6 +1,8 @@
 class Public::CustomersController < ApplicationController
-  
+
   def show
+    @customer = current_customer
+    @post_code = @customer.postcode
   end
 
   def edit
@@ -11,8 +13,8 @@ class Public::CustomersController < ApplicationController
 
   def check
   end
-  
+
   def withdraw
   end
-  
+
 end

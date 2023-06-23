@@ -1,2 +1,62 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div>
+	<h5>マイページ</h5>
+	<div>
+		<h6>登録情報</h6>
+		<%= link_to customers_information_edit_path do %>
+			<button>編集する</button>
+		<% end %>
+	</div>
+	<table>
+		<tr>
+			<td>姓</td>
+			<td><%= @customer.last_name %></td>
+		</tr>
+		<tr>
+			<td>セイ</td>
+			<td><%= @customer.last_name_kana %></td>
+		</tr>
+		<tr>
+			<td>名</td>
+			<td><%= @customer.first_name %></td>
+		</tr>
+		<tr>
+			<td>メイ</td>
+			<td><%= @customer.first_name_kana %></td>
+		</tr>
+		<tr>
+			<td>郵便番号</td>
+			<td>〒<%= @post_code %></td>
+		</tr>
+		<tr>
+			<td>住所</td>
+			<td><%= @customer.address %></td>
+		</tr>
+		<tr>
+			<td>電話番号</td>
+			<td><%= @customer.phone_number %></td>
+		</tr>
+		<tr>
+			<td>メールアドレス</td>
+			<td><%= @customer.email %></td>
+		</tr>
+	</table>
+
+	<table>
+		<tr>
+			<td><h6>配送先</h6></td>
+			<td>
+				<%#= link_to addresses_path do %><!--パスが違うのでコメントアウト-->
+					<button>一覧を見る</button>
+				<%# end %>
+			</td>
+		</tr>
+		<tr>
+			<td><h6>注文履歴</h6></td>
+			<td>
+				<%= link_to orders_path do %>
+					<button>一覧を見る</button>
+				<% end %>
+			</td>
+		</tr>
+	</table>
+</div>
