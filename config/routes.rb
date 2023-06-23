@@ -27,9 +27,10 @@ Rails.application.routes.draw do
 
     post 'orders/check'
     get 'orders/thanx'
+     
+    resources :addresses, only: [:index,:edit,:create,:update,:destroy]
 
-    resources :adresses, only: [:index,:edit,:create,:update,:destroy]
-   end
+　  end
 
 
  # 管理者用
