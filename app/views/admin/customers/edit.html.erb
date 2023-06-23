@@ -1,5 +1,8 @@
 <h1><%= @customer.full_name %>さんの会員情報編集</h1>
 
+<%= render 'layouts/error', obj: @customer %>
+
+
 <body>
   <%= form_with model: @customer, url: admin_customer_path do|f| %>
    <!-table>

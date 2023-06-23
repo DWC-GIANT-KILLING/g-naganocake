@@ -1,0 +1,10 @@
+<% if obj.errors.any? %>
+    <div>
+      <h3>入力項目が不足しています</h3>
+      <ul>
+        <% obj.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
