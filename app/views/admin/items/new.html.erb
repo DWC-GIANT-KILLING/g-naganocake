@@ -1,20 +1,35 @@
 <h1>商品新規登録</h1>
- <%= form_with model: @item, url: admin_items_path  do |f| %>
-   <%= f.file_field :file_name %>
-       <td></td>
-   </tr>
-   <tr>
-     <th>商品名</th>
-     <td><%= f.text_field :name %></td>
-   </tr>
-   <tr>商品説明</tr>
-   <td><%= f.text_area :detail %></td>
-   <tr>ジャンル</tr>
-   <td><%= f.select :genre_id %></td>
-   <tr>税抜価格</tr>
-   <td><%= f.text_area :unit_price %>円</td>
-   <tr>販売ステータス</tr>
-   <td><%= f.radio_button :is_selling %></td>
-
- </table>
-<% end %>
+  <%= form_with model: @item, url: admin_items_path  do |f| %>
+   <table>
+      <tr>
+        <th>商品画像</th>
+        <td><%= f.file_field :file_name %></td>
+      </tr>
+      <tr>
+        <th>商品名</th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th>商品説明</th>
+        <td><%= f.text_area :detail %></td>
+      </tr>
+      <tr>
+        <th>ジャンル</th>
+        <td><%= f.select :genre,['ケーキ', 'プリン', '焼き菓子','キャンディー'], {include_blank: '---'} %></td>
+      </tr>
+      <tr>
+        <th>税抜価格</th>
+        <td><%= f.text_field :unit_price %></td>
+      </tr>
+      <tr>
+        <th>販売ステータス</th>
+          <td>
+           <%= f.radio_button :is_selling, true %>
+           <%= f.label :true, "販売中" %>
+           <%= f.radio_button :is_selling, false %>
+           <%= f.label :false, "販売停止中" %>
+          </td>
+      </tr>
+    </table>
+    <%= f.submit'新規登録', class: "btn btn-success" %>
+  <% end %>
