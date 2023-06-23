@@ -1,2 +1,10 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<h1>注文履歴詳細#show</h1>
+
+<h3>注文情報</h3>
+<%= render '/orders/new', : @orders %>
+
+<h3>注文内容</h3>
+<%= render '/orders/check', : @orders %>
+
+<h3>請求情報(送料)</h3>
+<%= render '/orders/check', : @orders %>
