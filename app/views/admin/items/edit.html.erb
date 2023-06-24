@@ -1,2 +1,37 @@
 <h1>商品編集</h1>
+  <%= form_with model: @item, url: admin_item_path do |f| %>
+   <table>
+      <tr>
+        <th>商品画像</th>
+        <td><%= f.file_field :file_name %></td>
+      </tr>
+      <tr>
+        <th>商品名</th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th>商品説明</th>
+        <td><%= f.text_area :detail %></td>
+      </tr>
+      <tr>
+        <th>ジャンル</th>
+        <td><%= f.select :genre,['ケーキ', 'プリン', '焼き菓子','キャンディー'], {include_blank: '---'} %></td>
+      </tr>
+      <tr>
+        <th>税抜価格</th>
+        <td><%= f.text_field :unit_price %></td>
+      </tr>
+      <tr>
+        <th>販売ステータス</th>
+          <td>
+           <%= f.label :is_selling, '販売中' %>
+           <%= f.radio_button :is_selling, :true %>
+           <%= f.label :is_selling, '販売停止中' %>
+           <%= f.radio_button :is_selling, :false, checked: true %>
+          </td>
+      </tr>
+    </table>
+    <% end %>
+    <%= link_to '変更を保存する', edit_admin_item_path(@item.id), class: "btn btn-success" %>
+
 
