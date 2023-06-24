@@ -1,0 +1,20 @@
+ja:
+
+    activerecord:
+      attributes:
+        customer:
+          last_name: "姓"
+          last_name_kana: "姓のフリガナ"
+          first_name: "名"
+          first_name_kana: "名のフリガナ"
+          postcode: "郵便番号"
+          address: "住所"
+          phone_number: "電話番号"
+          email: "メールアドレス"
+          
+          
+      errors:
+        models:
+          customer:
+            blank: "を入力してください"
+
