@@ -1,6 +1,46 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
-!--後で消す--
-<%= link_to destroy_customer_session_path, method: :delete do %>
-    <i class="fas fa-sign-out-alt"></i> Log out
-<% end %>
+<div>
+  <div>
+    <div>
+      <div>
+        <h4>
+          ようこそ、ながのCAKEへ!
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、
+          購入には会員登録が必要になります。
+        </h4>
+      </div>
+      <div style="background-image: url(<%= asset_path('') %>);">
+        <ul>
+          <%# @item_images.each do |image| %>
+            <li>
+              <%= image_tag image.get_image(300,300) %>
+            </li>
+          <%# end %>
+        </ul>
+      </div>
+      <h3>新着商品</h3>
+        <div>
+          <div>
+            <%# @items.each do |item| %>
+              <div>
+                <%= link_to item_path(item.id) %>
+                  <div>
+                    <%= image_tag item.get_image(238,238) %>
+                      <div>
+                        <h6><%= item.item_name %></h6>
+                        <p>
+                          
+                        </p>
+                      </div>
+                    </div>
+               
+              </div>
+  
+          </div>
+        </div>
+      <div>
+        <%= link_to "全ての商品を見る>", items_path %>
+      </div>
+    </div>
+  </div>
+</div>
