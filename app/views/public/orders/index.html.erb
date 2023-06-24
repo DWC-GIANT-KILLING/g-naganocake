@@ -2,4 +2,8 @@
 
 <%= render '/orders/new', : @orders %>
 
-<%= f.submit "表示する" %>
+<div>  
+  <%= link_to orders_path do %>
+    <button>表示する</button>
+  <% end %>
+</div>

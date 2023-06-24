@@ -1,4 +1,25 @@
 <h1>注文情報確認#check</h1>
 
-<%= render '/cart_items', : @orders %>
+<div>
+  <%= render '/cart_items', : @orders %>
+</div>
 
+
+<div>
+  <table>
+    <tr> 
+      <th>支払方法</th>
+      <td><%= %></td>
+    </tr>
+    <tr> 
+      <th>お届け先</th>
+      <td><%= %></td>
+    </tr>
+  </table>
+</div>
+
+<div>  
+  <%= link_to orders_thanx_path do %>
+    <button>注文を確定する</button>
+  <% end %>
+</div>
