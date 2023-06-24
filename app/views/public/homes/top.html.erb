@@ -2,6 +2,7 @@
   <div>
     <div>
       <div>
+        <%= image_tag("naganocakelogo.png", alt: "Naganocake_LOGO", width: "170", height: "150") %>
         <h4>
           ようこそ、ながのCAKEへ!
           このサイトは、ケーキ販売のECサイトになります。<br>
@@ -9,15 +10,7 @@
           購入には会員登録が必要になります。
         </h4>
       </div>
-      <div style="background-image: url(<%= asset_path('') %>);">
-        <ul>
-          <%# @item_images.each do |image| %>
-            <li>
-              <%= image_tag image.get_image(300,300) %>
-            </li>
-          <%# end %>
-        </ul>
-      </div>
+      
       <h3>新着商品</h3>
         <div>
           <div>
