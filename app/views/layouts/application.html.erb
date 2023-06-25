@@ -6,15 +6,26 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <%= image_tag("naganocakelogo.png", alt: "Naganocake_LOGO", width: "170", height: "150") %>
-      <div class="">
-        <ul class="">
+      <div class="header-1">
+      <div class="top-button">
+        <%= image_tag("naganocakelogo.png", alt: "Naganocake_LOGO", width: "170", height: "150") %>
+      </div>
+      <div class="top-button">
+        <% if customer_signed_in? %>
+          <p class="">ようこそ、<%= current_customer.last_name %>さん！</p>
+        <% elsif admin_signed_in? %>
+          <p class="">ようこそ、管理者さん！</p>
+        <% end %>
+      </div>
+      
+      <div class="top-button">
+        <ul class="button-list">
           <% if customer_signed_in? %>
             <li class="nav-item">
               <%= link_to "マイページ", customers_mypage_path %>
@@ -60,15 +71,9 @@
           <% end %>
         </ul>
       </div>
-
-      <div class="">
-        <% if customer_signed_in? %>
-          <p class="">ようこそ、<%= current_customer.last_name %>さん！</p>
-        <% elsif admin_signed_in? %>
-          <p class="">ようこそ、管理者さん！</p>
-        <% end %>
       </div>
-      <div class="">
+
+      <div class="input">
         <%= form_with(url: items_path, method: :get) do |f| %>
           <%= f.text_field :query, value: params[:query], placeholder: "検索", aria_label: "検索" %>
           <div class="input-group-append">
