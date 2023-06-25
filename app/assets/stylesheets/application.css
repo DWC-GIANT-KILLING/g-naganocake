@@ -13,19 +13,16 @@
  *= require_tree .
  *= require_self
  */
-header {
-  text-align: right;
-}
+
 
 .header-1 {
   background-color: #f1f1f1;
-  width: 100%;
-  text-align: left;
 }
 
 .top-button {
   display: inline-block;
   margin-right: 10px;
+  width: 90%;
 }
 
 .button-list {
@@ -33,7 +30,6 @@ header {
   padding: 0;
   margin: 0;
   text-align: right;
-  width: 100%;
 }
 
 .button-list li {
@@ -41,8 +37,8 @@ header {
   margin-right: 10px;
 }
 
-.button-list li:last-child {
-  margin-right: 0;
+.button-list li:first-child {
+  margin-left: 0;
 }
 
 .button-list li a {
