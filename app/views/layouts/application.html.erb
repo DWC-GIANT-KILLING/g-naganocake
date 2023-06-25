@@ -16,14 +16,7 @@
       <div class="top-button">
         <%= image_tag("naganocakelogo.png", alt: "Naganocake_LOGO", width: "170", height: "150") %>
       </div>
-      <div class="top-button">
-        <% if customer_signed_in? %>
-          <p class="">ようこそ、<%= current_customer.last_name %>さん！</p>
-        <% elsif admin_signed_in? %>
-          <p class="">ようこそ、管理者さん！</p>
-        <% end %>
-      </div>
-      
+
       <div class="top-button">
         <ul class="button-list">
           <% if customer_signed_in? %>
@@ -73,6 +66,15 @@
       </div>
       </div>
 
+      <div class="header-2">
+      <div class="top-button">
+        <% if customer_signed_in? %>
+          <p class="">ようこそ、<%= current_customer.last_name %>さん！</p>
+        <% elsif admin_signed_in? %>
+          <p class="">ようこそ、管理者さん！</p>
+        <% end %>
+      </div>
+
       <div class="input">
         <%= form_with(url: items_path, method: :get) do |f| %>
           <%= f.text_field :query, value: params[:query], placeholder: "検索", aria_label: "検索" %>
@@ -80,6 +82,7 @@
             <%= f.submit "検索" %>
           </div>
         <% end %>
+      </div>
       </div>
     </header>
     <%= yield %>
