@@ -1,11 +1,8 @@
 <div>
   <div>
     <div>
-      <%#= render "",  %>
-    </div>
-    <div>
       <div>
-        <div class="my-element" style="background-image: url('<%= asset_path('naganocakemain.jpg') %>');">
+        <div class="my-element">
           <p>
             ようこそ、ながのCAKEへ！<br>
             このサイトは、ケーキ販売のECサイトになります。<br>
@@ -21,12 +18,12 @@
   </div>
   <div>
     <div>
-      <div>
+      <div class="new-items">
         <% @items.each do |item| %>
           <div>
-            <div>
+            <div class="new-item">
               <%= link_to item_path(item) do %>
-                <%= image_tag item.image(150, 100) %>
+                <%= image_tag item.get_item_image(150, 100) %>
               <% end %>
               <div><%= item.name %></div>
               <div><%= item.with_tax_price %></div>
