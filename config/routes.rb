@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
     post 'orders/check'
     get 'orders/thanx'
-     
+
     resources :addresses, only: [:index,:edit,:create,:update,:destroy]
 
  end
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
 
     get '/'=>'homes#top'
 
-    resources :items, only: [:index,:new,:create,:show,:edit,:update]
+    resources :items
 
     resources :genres, only: [:index,:edit,:create,:update,:destroy]
 
