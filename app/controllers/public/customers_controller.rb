@@ -36,4 +36,5 @@ class Public::CustomersController < ApplicationController
                           :postcode,:address,:phone_number,:email)
   end
 
+
 end
