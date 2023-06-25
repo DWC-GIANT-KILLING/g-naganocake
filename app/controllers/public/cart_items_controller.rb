@@ -1,7 +1,6 @@
 class Public::CartItemsController < ApplicationController
   def index
     @customer = current_customer
-    #@price = 
   end
   
   def update
