@@ -20,7 +20,7 @@ class Public::OrdersController < ApplicationController
     current_customer.cart_items.destory_all
   end
 
-  def confirm
+  def check
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items
     @postage = 400
@@ -46,9 +46,7 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-  def check
-    @cart_items = current_customer.cart_items
-  end
+  
 
   def thanx
   end
