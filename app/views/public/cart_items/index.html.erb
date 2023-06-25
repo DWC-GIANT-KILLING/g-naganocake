@@ -18,30 +18,36 @@
       
       <tr>
         <tbody>
+          <%= form_with model: cart_item, url: cart_items_path do|f| %>
           <td><%= cart_item.item.name %></td>
           <td><%= cart_item.item.with_tax_price %></td>
           <td>
-            <%= f.select :piece, *[0..10], autocomplete: "piece" %>
-          
+            <%= f.hidden_field :item_id, :value =>cart_item.item_id %>
+            <%= f.select :piece, *[0..10] %>
+            <%= link_to cart_item_path(cart_item), method: :patch do %>
+              <button>編集</button>
+            <% end %> 
           </td>
           <td><%= cart_item.subtotal %></td>
           <td>
-            <%= link_to cart_item_path(cart_item.current_cusstomer), method: :delete do%>
+            <%= link_to cart_item_path(cart_item), method: :delete do%>
               <button>削除する</button>
             <% end %>
           </td>
+          <% end %>
         </tbody>
       </tr>
     </table>
     
     <%= cart_item.subtotal %>
-    <% @price += cart_item.subtotal %>
-    <%= link_to cart_items_destroy_all_path(current_customer), method: :delete do %>
-      <button>カートを空にする</button>
-    <% end %>
+    <!--% @price += cart_item.subtotal %-->
+    
     
     
 <% end %>
+<%= link_to cart_items_destroy_all_path, method: :delete do %>
+      <button>カートを空にする</button>
+    <% end %>
   
 <%= link_to new_order_path do %>
     <button>情報入力に進む</button>
