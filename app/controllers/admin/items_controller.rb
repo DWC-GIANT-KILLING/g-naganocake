@@ -11,8 +11,9 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
+      #flash[:noticce] = "アイテムが追加されました！"
      redirect_to admin_item_path(@item)
-   else
+    else
      render :new
     end
   end
@@ -27,11 +28,12 @@ class Admin::ItemsController < ApplicationController
 
   def update
       @item = Item.find(params[:id])
-    if @item.update(item_params)
-       redirect_to admin_item_path
-    else
-      render :edit
-    end
+      if @item.update(item_params)
+         #flash[:notice] = "登録商品を編集しました"
+         redirect_to admin_item_path(@item)
+      else
+        render :edit
+      end
   end
 
   def destroy
@@ -41,10 +43,10 @@ class Admin::ItemsController < ApplicationController
   end
 
 
-
   private
 
   def item_params
-    params.require(:item).permit(:id, :genre_id, :name, :unit_price, :detail, :is_selling,:image)
+    params.require(:item).permit(:id, :genre_id, :name, :unit_price, :detail, :is_selling, :image)
   end
+
 end

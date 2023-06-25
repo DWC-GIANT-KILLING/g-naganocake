@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   has_many :cart_items
    has_one_attached :image
   def with_tax_price
-    (price * 1.1).floor
+    (unit_price * 1.1).floor
   end
 
   #商品画像
