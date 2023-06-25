@@ -1,2 +1,24 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<h1>商品一覧</h1>
+<table>
+   <% @items.each do |item| %>
+  <tr>
+    <td>
+      <%= link_to item_path(item) do %>
+        <% if item.image.attached? %>
+          <%= image_tag item.get_item_image(300,400)  %>
+        <% else %>
+          <%= image_tag 'no_image'  %>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+     <td><%= item.name %></td>
+  </tr>
+  <tr>
+     <td>¥<%= item.unit_price %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= paginate @items %>
