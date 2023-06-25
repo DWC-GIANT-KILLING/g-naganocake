@@ -1,6 +1,7 @@
 class Public::CartItemsController < ApplicationController
   def index
     @customer = current_customer
+    @price = 0
   end
   
   def update
@@ -23,9 +24,9 @@ class Public::CartItemsController < ApplicationController
   end
   
   def destroy_all
-    current_customer.cart_item.destroy_all
+    current_customer.cart_items.destroy_all
     flash[:notice] = "全ての商品を削除しました"
-    redirect_to cart_items_path(params[:current_customer_id])
+    redirect_to cart_items_path(current_customer)
   end
   
   def create

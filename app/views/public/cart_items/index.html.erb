@@ -29,6 +29,7 @@
             <% end %> 
           </td>
           <td><%= cart_item.subtotal %></td>
+          <% @price += cart_item.subtotal %>
           <td>
             <%= link_to cart_item_path(cart_item), method: :delete do%>
               <button>削除する</button>
@@ -38,13 +39,11 @@
         </tbody>
       </tr>
     </table>
-    
-    <%= cart_item.subtotal %>
-    <!--% @price += cart_item.subtotal %-->
-    
-    
-    
 <% end %>
+
+<h5>合計金額</h5>
+    <%= @price %>
+    
 <%= link_to cart_items_destroy_all_path, method: :delete do %>
       <button>カートを空にする</button>
     <% end %>
