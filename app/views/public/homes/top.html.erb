@@ -1,0 +1,42 @@
+<div>
+  <div>
+    <div>
+      <%#= render "",  %>
+    </div>
+    <div>
+      <div>
+        <div class="my-element" style="background-image: url('<%= asset_path('naganocakemain.jpg') %>');">
+          <p>
+            ようこそ、ながのCAKEへ！<br>
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            会員でない方も商品の閲覧はできますが、<br>
+            購入には会員登録が必要になります。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h2>新着商品</h2>
+  </div>
+  <div>
+    <div>
+      <div>
+        <% @items.each do |item| %>
+          <div>
+            <div>
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.get_image(150, 100) %>
+              <% end %>
+              <div><%= item.name %></div>
+              <div><%= item.with_tax_price %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div>
+    <%= link_to "全ての商品を見る >", items_path %>
+  </div>
+</div>

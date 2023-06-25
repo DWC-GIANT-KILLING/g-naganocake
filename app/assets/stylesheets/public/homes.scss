@@ -1,3 +1,25 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.my-element {
+  position: relative;
+  width: 900px;
+  height: 600px;
+}
+
+.my-element::after {
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: #fff;
+}
+
+.my-element p {
+  font-size: 24px;
+  color: #ffffff;
+  text-align: center;
+}
