@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-  
+
   def show
   end
 
@@ -11,8 +11,8 @@ class Public::CustomersController < ApplicationController
 
   def check
   end
-  
+
   def withdraw
   end
-  
+
 end
