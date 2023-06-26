@@ -15,11 +15,11 @@
       </tr>
       <tr>
         <th>ジャンル</th>
-        <td><%= f.select :genre,[genre.name], {include_blank: '---'} %></td>
+        <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name),.concat(@genres.map { |genre| [genre.name, genre.id] }) {include_blank: '---'} %></td>
       </tr>
       <tr>
         <th>税抜価格</th>
-        <td><%= f.text_field :unit_price %></td>
+        <td><%= f.text_field :unit_price %>円</td>
       </tr>
       <tr>
         <th>販売ステータス</th>
