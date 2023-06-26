@@ -4,53 +4,56 @@
 <%= link_to items_path do %>
   <button>買い物を続ける</button>
 <% end %>
-<% @customer.cart_items.each do |cart_item|%>
-    <table>
-      <tr>
-        <thead>
-          <th>商品名</th>
-          <th>単価(税込)</th>
-          <th>数量</th>
-          <th>小計</th>
-          <th></th>
-        </thead>
-      </tr>
-      
-      <tr>
-        <tbody>
-          
-          <td><%= cart_item.item.name %></td>
-          <td><%= cart_item.item.with_tax_price %></td>
-          <td>
-            <%= form_with model: cart_item do|f| %>
-              <%= f.hidden_field :id, :value =>cart_item.id %>
-              <%= f.select :piece, *[0..10] %>
-              <%= f.submit '編集' , url: cart_item_path(cart_item), method: :patch %>
-              <!--%= link_to cart_item_path(cart_item), method: :patch do %>-->
-                <!--<button>編集</button>-->
-              <!--% end %> -->
-            <% end %>
-          </td>
-          <td><%= cart_item.subtotal %></td>
-          <% @price += cart_item.subtotal %>
-          <td>
-            <%= link_to cart_item_path(cart_item), method: :delete do%>
-              <button>削除する</button>
-            <% end %>
-          </td>
-          
-        </tbody>
-      </tr>
-    </table>
-<% end %>
-
-<h5>合計金額</h5>
-    <%= @price %>
+<% if @customer.cart_items.exists? %>
+    <% @customer.cart_items.each do |cart_item|%>
+      <table>
+        <tr>
+          <thead>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
+          </thead>
+        </tr>
+        
+        <tr>
+          <tbody>
+            
+            <td><%= cart_item.item.name %></td>
+            <td><%= cart_item.item.with_tax_price %></td>
+            <td>
+              <%= form_with model: cart_item do|f| %>
+                <%= f.hidden_field :id, :value =>cart_item.id %>
+                <%= f.select :piece, *[0..10] %>
+                <%= f.submit '編集' , url: cart_item_path(cart_item), method: :patch %>
+              <% end %>
+            </td>
+            <td><%= cart_item.subtotal %></td>
+            <% @price += cart_item.subtotal %>
+            <td>
+              <%= link_to cart_item_path(cart_item), method: :delete do%>
+                <button>削除する</button>
+              <% end %>
+            </td>
+            
+          </tbody>
+        </tr>
+      </table>
+    <% end %>
     
-<%= link_to cart_items_destroy_all_path(@customer), method: :delete do %>
-    <button>カートを空にする</button>
-<% end %>
-  
-<%= link_to new_order_path do %>
-    <button>情報入力に進む</button>
+    <h5>合計金額</h5>
+      <%= @price %>
+      
+    <%= link_to cart_items_destroy_all_path(@customer), method: :delete do %>
+      <button>カートを空にする</button>
+    <% end %>
+    
+    <%= link_to new_order_path do %>
+      <button>情報入力に進む</button>
+    <% end %>
+    
+  <% else %>
+    <h3>カートに商品がありません</h3>
+    
 <% end %>
