@@ -10,7 +10,7 @@
       <th>ステータス</th>
       <th>注文詳細</th>
     </tr>
-    <% @orders.each do |order| %>
+      <% @orders.each do |order| %>
     <tr>
       <td>
         <%= order.created_at.strftime("%Y/%m/%d")%>
@@ -18,8 +18,9 @@
       <td>
         〒<%= order.postcode %><br>
         <%= order.address %><br>
-        <%= order.full_name%>
+        <%= order.full_name %>
       </td>
+      <% end %>
       <td>
         <% order.order_details.each do |order_detail| %>
           <%= order_detail.item.item_name %><br>
@@ -29,13 +30,12 @@
         <%= order.pay_price.to_s(:delimited) %>
       </td>
       <td>
-        <%= order.order_status_i18n %>
+        <%= order.status_i18n %>
       </td>
       <td>
-        <%= link_to orers_path do %>
-          <button>表示する</button>
-        <% end %>
+        <%= f.submit "表示する" do %>
       </td>
     </tr>
+    <% end %>
   </table>
 </div>

@@ -47,11 +47,11 @@
   </tr>
   <tr>
     <th>発送料</th>
-    <td><%= @order.postage = 800 %></td>
+    <td><%= @order.delivery_cost = 800 %></td>
   </tr>
   <tr>
     <th>ご請求額</th>
-    <td><%= order.pay_price.to_s(:delimited) %></td>
+    <td><%= order.total_price.to_s(:delimited) %></td>
   </tr>
 </table>
 
