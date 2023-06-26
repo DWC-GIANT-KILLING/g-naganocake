@@ -27,27 +27,26 @@
       <div>
         <%= f.radio_button :select_address, "2" %>
         <%= f.label :select_address_2, "新しいお届け先" %><br>
-          <table>
-            <tr>
-              <td><%= f.label :"郵便番号（ハイフンなし）" %></td>
-              <td><%= f.text_field :postcode, placeholder: "0000000" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :"住所" %></td>
-              <td><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", :size=> "60" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :"宛名" %></td>
-              <td><%= f.text_field :full_name, placeholder: "令和道子" %></td>
-            </tr>
-          </table>
-        </div>
-      <% end %>
-
-    <div>
-      <%= link_to orders_check_path do %>
-        <button>確認画面へ進む</button>
-      <% end %>
-    </div>
+        <table>
+          <tr>
+            <td><%= f.label :"郵便番号（ハイフンなし）" %></td>
+            <td><%= f.text_field :postcode, placeholder: "0000000" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"住所" %></td>
+            <td><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", :size=> "60" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"宛名" %></td>
+            <td><%= f.text_field :full_name, placeholder: "令和道子" %></td>
+          </tr>
+        </table>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to orders_check_path do %>
+      <button>確認画面へ進む</button>
+    <% end %>
   </div>
 </div>

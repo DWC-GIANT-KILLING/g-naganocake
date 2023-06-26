@@ -3,41 +3,55 @@
 <h5>注文情報</h5>
 <table>
   <tr>
-      <th>注文日</th>
-      <td></td>
-      <th>配送先</th>
-      <td></td>
-      <th>支払方法</th>
-      <td></td>
-      <th>ステータス</th>
-      <td></td>
+    <th>注文日</th>
+    <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+  </tr>
+  <tr>
+    <th>配送先</th>
+    <td><%= @order.address_display %></td>
+  </tr>
+  <tr>
+    <th>支払方法</th>
+    <td><%= @order.payment_i18n%></td>
+  </tr>
+  <tr>
+    <th>ステータス</th>
+    <td><%= @order.order_status_i18n %></td>
   </tr>
 </table>
 
 <h5>注文内容</h5>
 <table>
   <tr>
-      <th>商品</th>
-      <td></td>
-      <th>単価（税込）</th>
-      <td></td>
-      <th>個数</th>
-      <td></td>
-      <th>小計</th>
-      <td></td>
+    <th>商品</th>
+    <th>単価（税込）</th>
+    <th>個数</th>
+    <th>小計</th>
   </tr>
+  <% @order.order_details.each do |order_details| %>
+  <tr>
+    <td><%= order_details.item.item_name %></td>
+    <td><%= order_details.item_price.to_s(:delimited) %></td>
+    <td><%= order_details.quantity %></td>
+    <td><%= order_detail.total_price.to_s(:delimited) %></td>
+  </tr>
+  <% end %>
 </table>
 
 
 <h5>請求情報</h5>
 <table>
   <tr>
-      <th>商品合計</th>
-      <td></td>
-      <th>発送料</th>
-      <td></td>
-      <th>ご請求額</th>
-      <td></td>
+    <th>商品合計</th>
+    <td><%= total.to_s(:delimited) %></td>
+  </tr>
+  <tr>
+    <th>発送料</th>
+    <td><%= @order.postage = 800 %></td>
+  </tr>
+  <tr>
+    <th>ご請求額</th>
+    <td><%= order.pay_price.to_s(:delimited) %></td>
   </tr>
 </table>
 

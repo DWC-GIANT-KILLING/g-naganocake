@@ -9,7 +9,7 @@
       <th>小計</th>
     </tr>
   
-  <!-- %= @cart_items.each do |cart_item| % -->  
+  <%= @cart_items.each do |cart_item| %>  
     </tr>
       <td>
         <%= image_tag cart_item.item.get_image(70,100) %>
@@ -46,16 +46,16 @@
 
 <div>
   <h3>支払方法</h3>
-  <%= @oreder.payment_i18n %>
+  <%= @order.payment_i18n %>
 </div>
 <div> 
   <h3>お届け先</h3>
   <div>
     〒<%= @order.postcode %><%= @order.address %><br>
-    <%= @oreder.full_name%>
+    <%= @order.full_name%>
   </div>
 </div>  
-  <%= form_with model: @oreder, url:order_path, method: :post, local:true do |f| %>
+  <%= form_with model: @order, url:order_path, method: :post, local:true do |f| %>
   <%= f.hidden_field :customer_id %>
   <%= f.hidden_field :address %>
   <%= f.hidden_field :postcode%>
