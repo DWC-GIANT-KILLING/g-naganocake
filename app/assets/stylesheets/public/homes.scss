@@ -1,3 +1,34 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.my-element {
+  background-image: url(naganocakemain.jpg);
+  background-size: 100% 100%;
+  width: 100%;
+  height: 600px;
+}
+
+.my-element::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: #fff;
+}
+
+.my-element p {
+  font-size: 24px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.new-items {
+  display: flex;
+}
+
+.new-item {
+  margin-right: 10px;
+  display: inline-block;
+}
