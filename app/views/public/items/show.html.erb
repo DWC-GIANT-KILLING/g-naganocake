@@ -1,2 +1,16 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<h1><%= @item.name %></h1>
+<% if @item.image.attached? %>
+  <%= image_tag @item.get_item_image(300,400)  %>
+<% else %>
+  <%= image_tag 'no_image'  %>
+<% end %>
+<p><%= @item.detail %></p>
+<p>¥<%= @item.with_tax_price %>(税込)</p>
+
+<%= form_with model: @cart_item, url: cart_items_path do|f| %>
+
+<%= f.hidden_field :item_id, :value => @item.id %>
+<%= f.select :piece, *[1..10] %>
+<%= f.submit 'カートに入れる' %>
+
+<% end %>

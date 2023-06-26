@@ -1,4 +1,6 @@
 class Admin::ItemsController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @items = Item.all
 
@@ -11,7 +13,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      #flash[:noticce] = "アイテムが追加されました！"
+      flash[:noticce] = "アイテムが追加されました！"
      redirect_to admin_item_path(@item)
     else
      render :new
@@ -29,7 +31,7 @@ class Admin::ItemsController < ApplicationController
   def update
       @item = Item.find(params[:id])
       if @item.update(item_params)
-         #flash[:notice] = "登録商品を編集しました"
+         flash[:notice] = "登録商品を編集しました"
          redirect_to admin_item_path(@item)
       else
         render :edit
