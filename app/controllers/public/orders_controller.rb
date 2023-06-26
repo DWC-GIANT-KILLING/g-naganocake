@@ -23,8 +23,7 @@ class Public::OrdersController < ApplicationController
   def check
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items
-    @postage = 400
-    
+   
     #自身の住所
     if params [:order][:select_address] =="0"
       @order.postcode = current_customer.postcode
@@ -57,7 +56,6 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @postage 400
   end
   
   
