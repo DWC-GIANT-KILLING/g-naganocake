@@ -44,7 +44,7 @@
 <h5>合計金額</h5>
     <%= @price %>
     
-<%= link_to cart_items_destroy_all_path, method: :delete do %>
+<%= link_to cart_items_destroy_all_path(@customer), method: :delete do %>
       <button>カートを空にする</button>
     <% end %>
   
