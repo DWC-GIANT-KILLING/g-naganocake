@@ -19,9 +19,10 @@ Rails.application.routes.draw do
     patch 'customers/update'=>'customers#update'
     get 'customers/check'
     patch 'customers/withdraw'
-
-    resources :cart_items, only: [:index,:update,:create,:destroy]
+    
     delete 'cart_items/destroy_all'
+    resources :cart_items, only: [:index,:update,:create,:destroy]
+
 
     resources :orders, only: [:new,:index,:show,:create]
 
