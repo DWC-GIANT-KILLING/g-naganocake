@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 2023_06_21_011752) do
     t.string "name"
     t.integer "unit_price"
     t.text "detail"
-    t.boolean "is_selling"
+    t.boolean "is_selling", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 2023_06_21_011752) do
     t.integer "item_id"
     t.integer "piece"
     t.integer "price"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2023_06_21_011752) do
     t.string "postcode"
     t.string "full_name"
     t.integer "total_price"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
