@@ -1,2 +1,53 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h1>注文履歴詳細</h1>
+<table>
+  <tr>
+    <th>購入者</th>
+    <td><%= @order.full_name %></td>
+  </tr>
+  <tr>
+    <th>注文日</th>
+    <td><%= @order.full_name %></td>
+  </tr>
+  <tr>
+    <th>配送先</th>
+    <td><%= @address.address %></td>
+  </tr>
+    <tr>
+      <th>支払い方法</th>
+      <td><%= @order.payment %></td>
+    </tr>
+    <tr>
+      <th>注文ステータス</th>
+      <td><%= f.select :order_status, %></td>
+      <td></td>
+    </tr>
+    <% end %>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>制作ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.with_tax_price %></td>
+      <td><%= order_details.piece %></td>
+      <td><%= %></td>
+      <td><%= order_details.status %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>商品合計<%= item.with_tax_price %>円</p>
+<p>送料<%= order.delivery_cost %>円</p>
+<p>請求金額合計<%= %>円</p>
+
