@@ -1,4 +1,5 @@
 <h1>注文履歴詳細</h1>
+ <%= form_with model: @order, url: admin_order_path  do |f| %>
 <table>
   <tr>
     <th>購入者</th>
@@ -18,9 +19,10 @@
     </tr>
     <tr>
       <th>注文ステータス</th>
-      <td><%= f.select :order_status, %></td>
+      <td><%= f.select :order_status, Order.order_statuses.keys %></td>
       <td></td>
     </tr>
+    <%= f.submit '更新' %>
     <% end %>
 </table>
 
@@ -40,8 +42,10 @@
       <td><%= item.name %></td>
       <td><%= item.with_tax_price %></td>
       <td><%= order_details.piece %></td>
-      <td><%= %></td>
-      <td><%= order_details.status %></td>
+      <td><%= item.subtotall %></td>
+      <td><%= order_details.status %>
+          <%= link_to "更新" admin_order_path(@order) %>
+      </td>
     </tr>
     <% end %>
   </tbody>
@@ -49,5 +53,5 @@
 
 <p>商品合計<%= item.with_tax_price %>円</p>
 <p>送料<%= order.delivery_cost %>円</p>
-<p>請求金額合計<%= %>円</p>
+<p>請求金額合計<%= order.total_price%>円</p>
 

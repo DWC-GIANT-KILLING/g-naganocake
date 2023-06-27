@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     patch 'customers/update'=>'customers#update'
     get 'customers/check'
     patch 'customers/withdraw'
-    
+
     delete 'cart_items/destroy_all'
     resources :cart_items, only: [:index,:update,:create,:destroy]
 
@@ -41,7 +41,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
 
-    get '/'=>'homes#top'
+    #get '/'=>'homes#top'
+    get '/admin' => 'homes#top'
+
 
     resources :items
 
