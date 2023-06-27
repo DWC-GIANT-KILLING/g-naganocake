@@ -62,3 +62,110 @@
 .input {
   text-align: right;
 }
+
+/*会員登録*/
+.registration-form {
+  max-width: 1200px;
+  margin-left: 30%;
+}
+
+.registration-form .table {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.registration-form .form-field {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.registration-form .form-field label {
+  width: 30%;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.registration-form .form-field input[type="text"],
+.registration-form .form-field input[type="email"],
+.registration-form .form-field input[type="password"],
+.registration-form .form-field select {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.registration-form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.registration-form button:hover {
+  background-color: #0056b3;
+}
+
+/*会員ログイン*/
+
+.back-color {
+
+  background-color: #f5f5f5;
+
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.login-form {
+  width: 400px;
+  padding: 20px;
+
+  
+  border-radius: 4px;
+}
+
+.login-form h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.login-form div {
+  margin-bottom: 20px;
+}
+
+.login-form .field label {
+  font-weight: bold;
+}
+
+.login-form .field input[type="email"],
+.login-form .field input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-form .field .actions {
+  text-align: right;
+}
+
+.login-form .field .actions input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-form .field .actions input[type="submit"]:hover {
+  background-color: #0056b3;
+}
