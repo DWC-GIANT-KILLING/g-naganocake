@@ -1,5 +1,4 @@
 class Address < ApplicationRecord
-  before_action :authenticate_customer!
   
   belongs_to :customer
   
