@@ -13,10 +13,13 @@
     </td>
   </tr>
   <tr>
-     <td><%= item.name %></td>
+    <td><%= item.name %></td>
   </tr>
   <tr>
-     <td>¥<%= item.unit_price %></td>
+    <td>¥<%= item.unit_price %></td>
+  </tr>
+  <tr>
+    <td><%= item.is_selling ? '販売中' : '売り切れ' %></td>
   </tr>
   <% end %>
 </table>
