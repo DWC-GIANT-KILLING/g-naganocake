@@ -13,21 +13,34 @@
  *= require_tree .
  *= require_self
  */
-
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 .header-1 {
   background-color: #f39800;
   display: flex;
 }
 
-.header-2 {
-  display: flex;
+.image-link {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.image-link:hover {
+  opacity: 0.7; /* カーソルを合わせたときの透明度（0.7は例です） */
 }
 
 .top-button {
   display: inline-block;
   margin-right: 10px;
   width: 90%;
+}
+.top-button li {
+  list-style: none;
+  padding-left:0
 }
 
 .button-list {
@@ -49,16 +62,36 @@
 .button-list li a {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #77474b;
-  color: #333333;
-  color: #f39800;
+  background-color: #664100;
   text-decoration: none;
+  color: #f39800;
 }
 
 .button-list li a:hover {
-  background-color: #dddddd;
+  opacity: 0.7;
 }
 
 .input {
   text-align: right;
+}
+
+.in-message {
+  margin-top: 20px;
+}
+
+.background {
+
+}
+
+.button {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #664100;
+  text-decoration: none;
+  color: #f39800;
+}
+
+.button:hover {
+  opacity: 0.7;
 }

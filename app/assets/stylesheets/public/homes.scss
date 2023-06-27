@@ -24,11 +24,19 @@
   text-align: center;
 }
 
+.new-item-list {
+  display: inline-block;
+}
+
+.title-new {
+  margin: 10px;
+}
+
 .new-items {
   display: flex;
 }
 
 .new-item {
-  margin-right: 10px;
+  margin: 10px;
   display: inline-block;
 }

@@ -13,11 +13,9 @@
       </div>
     </div>
   </div>
-  <div>
-    <h2>新着商品</h2>
-  </div>
-  <div>
-    <div>
+  <div class="new-item-list">
+    <h2 class="title-new">新着商品</h2>
+    <div class="background">
       <div class="new-items">
         <% @items.each do |item| %>
           <div>
@@ -26,7 +24,7 @@
                 <%= image_tag item.get_item_image(150, 100) %>
               <% end %>
               <div><%= item.name %></div>
-              <div><%= item.with_tax_price %></div>
+              <div><%= item.with_tax_price %>円</div>
             </div>
           </div>
         <% end %>
@@ -34,6 +32,6 @@
     </div>
   </div>
   <div>
-    <%= link_to "全ての商品を見る >", items_path %>
+    <%= link_to "全ての商品を見る >", items_path, class: "button" %>
   </div>
 </div>
