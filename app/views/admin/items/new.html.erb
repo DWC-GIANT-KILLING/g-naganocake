@@ -16,7 +16,7 @@
       </tr>
       <tr>
         <th>ジャンル</th>
-        <td><%= f.select :genre_id,[['ケーキ',1], ['プリン',2], ['焼き菓子',3],['キャンディー',4]], {include_blank: '---'} %></td>
+        <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {include_blank: '---'} %></td>
       </tr>
       <tr>
         <th>税抜価格</th>
@@ -27,10 +27,10 @@
           <td>
               <%= f.label :is_selling, '販売中' %>
               <%= f.radio_button :is_selling, :true %>
-              <%= f.label :is_selling, '販売停止中' %>
+              <%= f.label :is_selling, '売り切れ' %>
               <%= f.radio_button :is_selling, :false, checked: true %>
           </td>
       </tr>
     </table>
-    <%= f.submit'新規登録', class: "btn btn-success" %>
+    <%= f.submit'新規登録' %>
   <% end %>
