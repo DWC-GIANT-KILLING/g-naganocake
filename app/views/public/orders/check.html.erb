@@ -1,4 +1,4 @@
-<h1>注文情報確認#check</h1>
+<h1>注文情報確認</h1>
 
 <div>
   <table>
@@ -12,14 +12,14 @@
   <% @cart_items.each do |cart_item| %>
     </tr>
       <td>
-        <%= image_tag cart_item.item.get_image(70,100) %>
-        <%= cart_item.item.item_name %>
+        <!--%= image_tag cart_item.item.get_image(70,100) % -->
+        <%= cart_item.item.name %>
       </td>
       <td>
-        <%= cart_item.tax_price.to_s(:delimited) %>
+        <%= cart_item.item.with_tax_price.to_s(:delimited) %>
       </td>
       <td>
-        <%= cart_item.count %>
+        <%= cart_item.piece %>
       </td>
       <td>
         <%= cart_item.subtotal.to_s(:delimited) %>
@@ -63,7 +63,7 @@
   <%= f.hidden_field :full_name %>
   <%= f.hidden_field :payment %>
   <%= f.hidden_field :delivery_cost %>
-  <%= f.hidden_field :total_price %>
+  <%= f.hidden_field :total_price, :value => @order.total_price %>
 </div>
 <div>
   <%= f.submit "注文を確定する" %>

@@ -14,8 +14,8 @@ class Public::OrdersController < ApplicationController
       @order_details = OrderDetail.new
       @order_details.order_id = @order.id
       @order_details.item_id = cart_item.item.id
-      @order_details.count = cart_item.count
-      @order_details.tax_in_price = cart_item.item.with_tax_price
+      @order_details.piece = cart_item.piece
+      @order_details.price = cart_item.item.with_tax_price
       @order_details.save
     end
     current_customer.cart_items.destroy_all
@@ -23,7 +23,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def check
-    @order = Order.new
+    @order = Order.new(order_params)
     @price = 0
     @cart_items = current_customer.cart_items
   #byebug
@@ -46,20 +46,18 @@ class Public::OrdersController < ApplicationController
       @order.address = [:ordre][:address]
       @order.full_name = [:order][:full_name]
     end
-
   end
-
 
   def thanx
   end
 
   def index
-    @order = Order.find(params[:id])
-    @orders = current_cutomer.orders
+    @orders = current_customer.orders.all
   end
 
   def show
     @order = Order.find(params[:id])
+    @price = 0
   end
 
 
@@ -67,7 +65,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment, :postcode, :address, :full_name)
+    params.require(:order).permit(:payment, :postcode, :address, :full_name, :total_price)
   end
 
 end

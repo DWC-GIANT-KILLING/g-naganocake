@@ -1,14 +1,18 @@
-<h1>注文履歴詳細#show</h1>
+<h1>注文履歴詳細</h1>
 
 <h5>注文情報</h5>
 <table>
   <tr>
     <th>注文日</th>
-    <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+    <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
   </tr>
   <tr>
     <th>配送先</th>
-    <td><%= @order.address_display %></td>
+    <td><!-- %= @order.address_display % -->
+    〒<%= @order.postcode %><br>
+        <%= @order.address %><br>
+        <%= @order.full_name %>
+    </td>
   </tr>
   <tr>
     <th>支払方法</th>
@@ -16,7 +20,7 @@
   </tr>
   <tr>
     <th>ステータス</th>
-    <td><%= @order.order_status_i18n %></td>
+    <td><%= @order.status_i18n %></td>
   </tr>
 </table>
 
@@ -30,20 +34,19 @@
   </tr>
   <% @order.order_details.each do |order_details| %>
   <tr>
-    <td><%= order_details.item.item_name %></td>
-    <td><%= order_details.item_price.to_s(:delimited) %></td>
-    <td><%= order_details.count %></td>
-    <td><%= order_detail.total_price.to_s(:delimited) %></td>
+    <td><%= order_details.item.name %></td>
+    <td><%= order_details.item.with_tax_price %></td>
+    <td><%= order_details.piece %></td>
+    <td><%= order_details.subtotal %></td>
   </tr>
-  <% end %>
-</table>
+ </table>
 
 
 <h5>請求情報</h5>
 <table>
   <tr>
     <th>商品合計</th>
-    <td><%= total.to_s(:delimited) %></td>
+    <td><%= @price += order_details.subtotal %></td>
   </tr>
   <tr>
     <th>発送料</th>
@@ -51,8 +54,8 @@
   </tr>
   <tr>
     <th>ご請求額</th>
-    <td><%= order.total_price.to_s(:delimited) %></td>
+    <td><%= @order.total_price %></td>
   </tr>
 </table>
-
+ <% end %>
 
