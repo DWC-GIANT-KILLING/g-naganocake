@@ -1,20 +1,25 @@
-<h1><%= @item.name %></h1>
-<% if @item.image.attached? %>
-  <%= image_tag @item.get_item_image(300,400)  %>
-<% else %>
-  <%= image_tag 'no_image'  %>
-<% end %>
-<p><%= @item.genre.name %></p>
-<p><%= @item.detail %></p>
-<p>¥<%= @item.with_tax_price %>(税込)</p>
-
-<% if @item.is_selling? %>
-  <%= form_with model: @cart_item, url: cart_items_path do|f| %>
-  
-  <%= f.hidden_field :item_id, :value => @item.id %>
-  <%= f.select :piece, *[1..10] %>
-  <%= f.submit 'カートに入れる' %>
-  
+  <h1><%= @item.name %></h1>
+  <% if @item.image.attached? %>
+    <%= image_tag @item.get_item_image(300,400)  %>
+  <% else %>
+    <%= image_tag 'no_image'  %>
   <% end %>
+  <p><%= @item.genre.name %></p>
+  <p><%= @item.detail %></p>
+  <% if @item.is_selling == true %>
+    <p>販売中</p>
+  <% elsif @item.is_selling == false %>
+    <p>売り切れ</p>
+  <% end %>
+  <p>¥<%= @item.with_tax_price %>(税込)</p>
   
-<% end %>
+  <% if @item.is_selling? %>
+    <%= form_with model: @cart_item, url: cart_items_path do|f| %>
+    
+    <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.select :piece, *[1..10] %>
+    <%= f.submit 'カートに入れる' %>
+    
+    <% end %>
+    
+  <% end %>
