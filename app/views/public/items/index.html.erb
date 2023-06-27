@@ -20,13 +20,6 @@
   </tr>
   <tr>
     <td><%= item.is_selling ? '販売中' : '売り切れ' %></td>
-    <td>
-      <% if item.is_selling == true %>
-        <p>販売中</p>
-      <% elsif item.is_selling == false %>
-        <p>売り切れ</p>
-      <% end %>
-    </td>
   </tr>
   <% end %>
 </table>
