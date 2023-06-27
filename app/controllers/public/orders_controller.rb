@@ -26,12 +26,12 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @price = 0
     @cart_items = current_customer.cart_items
-  #byebug
+    
     #自身の住所
     if params[:order][:select_address] == "0"
       @order.postcode = current_customer.postcode
       @order.address = current_customer.address
-      @order.full_name = current_customer.first_name + current_customer.last_name
+      @order.full_name = current_customer.last_name + current_customer.first_name
 
     #登録済住所から選択
     elsif params[:order][:select_address] == "1"

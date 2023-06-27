@@ -20,6 +20,7 @@ ja:
           address: "住所"
           phone_number: "電話番号"
           email: "メールアドレス"
+          password: "パスワード"
           
           
         genre:
@@ -41,10 +42,12 @@ ja:
           address: "住所"
           full_name: "氏名"
           total_price: "請求額"
+          status: "注文ステータス"
           
         order_detail:
           piece: "個数"
           price: "注文価格"
+          status: "製作ステータス"
           
         session:
           signed_in: "ログイン"
