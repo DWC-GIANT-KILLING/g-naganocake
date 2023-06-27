@@ -41,8 +41,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
 
-    #get '/'=>'homes#top'
-    get '/admin' => 'homes#top'
+    get '/'=>'homes#top'
+
 
 
     resources :items

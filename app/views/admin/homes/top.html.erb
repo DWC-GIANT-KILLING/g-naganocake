@@ -10,9 +10,9 @@
      </tr>
    </thead>
    <tbody>
-     <% @order_details.each do |order| %>
+     <% @order.each do |order| %>
        <tr>
-         <td><%= order_update_at %></td>
+         <td><%= link_to order.create_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S') %></td>
          <td><%= orders.full_name %></td>
          <td><%= order.piece %></td>
          <td><%= order.order_status %></td>
