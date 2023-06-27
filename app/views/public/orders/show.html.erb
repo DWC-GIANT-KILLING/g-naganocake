@@ -32,7 +32,7 @@
   <tr>
     <td><%= order_details.item.item_name %></td>
     <td><%= order_details.item_price.to_s(:delimited) %></td>
-    <td><%= order_details.quantity %></td>
+    <td><%= order_details.count %></td>
     <td><%= order_detail.total_price.to_s(:delimited) %></td>
   </tr>
   <% end %>
