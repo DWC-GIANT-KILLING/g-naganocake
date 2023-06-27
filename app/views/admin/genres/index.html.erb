@@ -1,25 +1,42 @@
-<h1>ジャンル一覧・追加</h1>
- <%= form_with model: @genre, url: admin_genres_path do |f| %>
-<table>
-  <tr>
-    <th>ジャンル名</th>
-      <td><%= f.text_field :name, autocomplete: "genre_name" %></td>
-      <td><%= f.submit'新規登録', class: "btn btn-success" %></td>
-  </tr>
-</table>
- <% end %>
+  <div>
+    <%= flash[:notice] %>
+  </div>
 
+<%= render 'layouts/error', obj: @genre %>
 
+  <h1>ジャンル一覧・追加</h1>
+  
+  <div class="form-container">
+    <%= form_with model: @genre, url: admin_genres_path do |f| %>
+    <table >
+      <tr>
+        <th>ジャンル名</th>
+        <td class="form"><%= f.text_field :name, autocomplete: "genre_name" %></td>
+        <td class="form"><%= f.submit'新規登録' %></td>
+      </tr>
+    </table>
+    <% end %>
+  </div>
+  
+  <h2>ジャンル</h2>
+  <table class="table">
+       <% @genres.each do |genre| %>
+       <tr>
+         <th class="head"><%= genre.name %></th>
+         <td>
+            <%= link_to edit_admin_genre_path(genre) do %>
+            <button>編集する</button>
+            <% end %>
+         </td>
+         <td>
+            <%= link_to admin_genre_path(genre), method: :delete, data: { confirm: '削除する？' } do %>
+            <button>削除する</button>
+            <% end %>
+          </td>
+       </tr>
+       <% end %>
+  </table>
 
-<table>
- <th>ジャンル</th>
-     <% @genres.each do |genre| %>
-     <tr>
-       <td><%= genre.name %></td>
-       <td><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-success" %></td>
-       <td><%= link_to "削除する", admin_genre_path(genre), method: :delete, data: { confirm: '削除する？' }, class: "btn btn-sm btn-danger"%></td>
-     </tr>
-     <% end %>
-</table>
-
-
+<div>
+  <%= paginate @genres %>
+</div>

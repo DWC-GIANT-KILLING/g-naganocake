@@ -2,7 +2,13 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :order_details
   has_many :cart_items
-   has_one_attached :image
+  has_one_attached :image
+  
+  validates :name, presence: true
+  validates :unit_price, presence: true
+  validates :detail, presence: true
+  validates :image, presence: true
+  
   def with_tax_price
     (unit_price * 1.1).floor
   end

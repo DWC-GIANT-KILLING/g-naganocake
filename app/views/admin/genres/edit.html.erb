@@ -1,12 +1,17 @@
+<%= render 'layouts/error', obj: @genre %>
+
 <h1>ジャンル編集</h1>
-   <%= form_with model: @genre, url: admin_genre_path do |f| %>
-<table>
-  <tr>
-    <thead>ジャンル名</thead>
-    <tbody>
-      <td><%= f.text_field :name %></td>
-      <td><%= f.submit '変更を保存', class: "btn btn-success"%></td>
-      </tbody>
-  </tr>
-</table>
+
+<body class="form-container">
+  <%= form_with model: @genre, url: admin_genre_path do |f| %>
+  <table>
+    <tr>
+      <thead>ジャンル名</thead>
+      <tbody>
+        <td class="form"><%= f.text_field :name %></td>
+        <td class="form"><%= f.submit '変更を保存', class: "btn btn-success"%></td>
+        </tbody>
+    </tr>
+  </table>
   <% end %>
+</body>
