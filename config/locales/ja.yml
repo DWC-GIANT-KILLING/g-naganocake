@@ -18,6 +18,6 @@ ja:
         status:
           not_started: "着手不可"
           pending: "制作待ち"
-          inproguress: "製作中"
+          in_progress: "製作中"
           completed: "製作完了"
 

@@ -26,7 +26,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @price = 0
     @cart_items = current_customer.cart_items
-    
+
     #自身の住所
     if params[:order][:select_address] == "0"
       @order.postcode = current_customer.postcode
@@ -42,9 +42,7 @@ class Public::OrdersController < ApplicationController
 
     #新しいお届け先
     elsif params[:order][:select_address] == "2"
-      @order.postcode = [:order][:postcode]
-      @order.address = [:ordre][:address]
-      @order.full_name = [:order][:full_name]
+
     end
   end
 
