@@ -9,9 +9,9 @@
       <% end %>
     </div>
 
-    <div>
-      <% if @customer.cart_items.exists? %>
-
+    
+    <% if @customer.cart_items.exists? %>
+      <div>
         <table>
           <tr>
             <thead>
@@ -28,7 +28,6 @@
               <td class="data"><%= cart_item.item.name %></td>
               <td class="data"><%= cart_item.item.with_tax_price %>円</td>
               <td class="data">
-
                 <%= form_with model: cart_item do|f| %>
                   <%= f.hidden_field :id, :value =>cart_item.id %>
                   <%= f.select :piece, *[0..10] %>
@@ -62,9 +61,10 @@
         <%= link_to cart_items_destroy_all_path(@customer), method: :delete do %>
           <button class="button">カートを空にする</button>
         <% end %>
-
+      </div>
+        
       <% else %>
-        <h3>カートに商品がありません</h3>
+        <h2>カートに商品がありません</h2>
       <% end %>
     </div>
   </main>

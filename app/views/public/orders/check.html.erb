@@ -1,11 +1,11 @@
   <main>
-    
+
     <div class="container">
       <h1>注文情報確認</h1>
     </div>
-    
+
     <div>
-      <table class="table">
+      <table>
         <tr>
           <thead>
           <th class="head">商品名</th>
@@ -14,41 +14,31 @@
           <th class="head">小計</th>
           </thead>
         </tr>
-        
+
         </tr>
           <% @cart_items.each do |cart_item| %>
             <tbody>
-              <td class="data">
-                <%= cart_item.item.name %>
-              </td>
-              <td class="data">
-                <%= cart_item.item.with_tax_price %>
-              </td>
-              <td class="data">
-                <%= cart_item.piece %>
-              </td>
-              <td class="data">
-                <%= cart_item.subtotal %>
-                <% @price += cart_item.subtotal %>
-              </td>
+              <td class="data"><%= cart_item.item.name %></td>
+              <td class="data"><%= cart_item.item.with_tax_price %>円</td>
+              <td class="data"><%= cart_item.piece %></td>
+              <td class="data"><%= cart_item.subtotal %><% @price += cart_item.subtotal %>円</td>
             </tbody>
           <% end %>
         </tr>
       </table>
-    </div>
-    <div>
+
       <table>
         <tr>
           <th class="head">送料</th>
-          <td class="data"><%= @order.delivery_cost = 800 %></td>
+          <td class="data"><%= @order.delivery_cost = 800 %>円</td>
         </tr>
         <tr>
           <th class="head">商品合計</th>
-          <td class="data"><%= @price%></td>
+          <td class="data"><%= @price%>円</td>
         </tr>
         <tr>
           <th class="head">請求金額</th>
-          <td class="data"><%= @order.total_price = @order.delivery_cost + @price.to_i %></td>
+          <td class="data"><%= @order.total_price = @order.delivery_cost + @price.to_i %>円</td>
         </tr>
         <tr>
           <th class="head">支払方法</h3>
@@ -64,6 +54,7 @@
         </tr>
       </table>
     </div>
+
     <div class="container">
       <div>
         <%= form_with model: @order, url:orders_path, method: :post, local:true do |f| %>
@@ -73,7 +64,7 @@
         <%= f.hidden_field :payment %>
         <%= f.hidden_field :delivery_cost %>
         <%= f.hidden_field :total_price, :value => @order.total_price %>
-        
+
         <div>
           <%= f.submit "注文を確定する", class:"button"%>
         </div>
