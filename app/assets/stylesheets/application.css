@@ -19,7 +19,7 @@
   box-sizing: border-box;
 }
 
-.header-1 {
+header {
   background-color: #f39800;
   display: flex;
 }
@@ -75,12 +75,62 @@
   text-align: right;
 }
 
-.in-message {
-  margin-top: 20px;
+/*会員登録*/
+/*会員ログイン*/
+
+.back-color {
+  background-color: #f5f5f5;
 }
 
-.background {
+main {
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
 
+.form {
+  width: 400px;
+  padding: 10px;
+}
+
+.form h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.form div {
+  margin-bottom: 20px;
+}
+
+.form .field label {
+  font-weight: bold;
+}
+
+.form .field {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.form .field .actions {
+  text-align: right;
+}
+
+.form .field .actions input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form .field .actions input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.in-message {
+  margin-top: 20px;
 }
 
 .button {
@@ -94,4 +144,60 @@
 
 .button:hover {
   opacity: 0.7;
+}
+
+.submit {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 10pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #664100;     /* 背景色     */
+  color         : #f39800;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #000066;    /* 枠の指定 */
+}
+.submit:hover {
+  opacity: 0.7;
+  box-shadow    : none;        /* カーソル時の影消去 */
+  /*color         : #000066;     /* 背景色     */
+  /*background    : #ffffff;     /* 文字色     */
+}
+
+/*テーブル*/
+
+.info {
+  display: flex;
+  justify-content: center;
+}
+
+.my {
+  width: 100%;
+}
+
+.page {
+  margin-left: 25%;
+  
+}
+
+.table {
+  display: flex;
+  justify-content: center;
+}
+
+.tr {
+  max-width: 600px;
+}
+
+.head {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: left;
+}
+
+.date {
+  padding: 10px;
 }
