@@ -220,7 +220,6 @@ a:-webkit-any-link {
   line-height   : 1em;         /* 1行の高さ  */
   transition    : .3s;         /* なめらか変化 */
   box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
-  border        : 2px solid #000066;    /* 枠の指定 */
 }
 
 .submit:hover {
@@ -229,6 +228,11 @@ a:-webkit-any-link {
   /*color         : #000066;     /* 背景色     */
   /*background    : #ffffff;     /* 文字色     */
 }
+
+.image-form {
+  display: none;
+}
+
 
 
 .info {

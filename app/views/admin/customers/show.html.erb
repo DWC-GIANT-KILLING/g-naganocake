@@ -7,7 +7,7 @@
   </div>
   
   <div>
-    <table class="table">
+    <table>
       <tr>
         <th class="head">会員ID</th>
         <td class="data"><%= @customer.id%></td>
@@ -27,7 +27,7 @@
         <td class="data"><%= @customer.postcode %></td>
       </tr>
       <tr>
-        <th>住所</th>
+        <th class="head">住所</th>
         <td class="data"><%= @customer.address %></td>
       </tr>
       <tr>
@@ -45,11 +45,11 @@
       
     </table>
   </div>
-  <div>
-    <%= link_to edit_admin_customer_path(@customer.id) do %>
-      <button>編集</button>
+  <div class="container">
+    <%= link_to edit_admin_customer_path(@customer.id), class: "button" do %>
+      <div>編集</div>
     <% end %>
-    <%= link_to admin_path do %>
-      <button>注文履歴一覧へ</button>
+    <%= link_to admin_path, class: "button" do %>
+      <div>注文履歴一覧</div>
     <% end %>
   </div>

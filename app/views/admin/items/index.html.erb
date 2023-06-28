@@ -3,11 +3,11 @@
   </div>
 
 <h1>商品一覧</h1>
-  <%= link_to new_admin_item_path do %>
-    <button>新規登録</button>
+  <%= link_to new_admin_item_path, class: "button" do %>
+    <div>新規登録</div>
   <% end %>
 
-<table class="table">
+<table>
   <thead>
     <tr>
       <th class="head">商品ID</th>

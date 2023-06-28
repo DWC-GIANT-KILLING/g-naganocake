@@ -11,7 +11,7 @@
     <% end %>
   </div>
 
-<table class="table">
+<table>
    <tr>
      <th class="head">商品名</th>
      <td class="data"><%= @item.name %></td>
@@ -26,8 +26,7 @@
     </tr>
     <tr>
      <th class="head">税込価格(税抜き価格）</th>
-     <td class="data">¥<%= @item.with_tax_price %></td>
-     <td class="data">(¥<%= @item.unit_price %>)</td>
+     <td class="data"><%= @item.with_tax_price %>円(<%= @item.unit_price %>円)</td>
     </tr>
     <tr>
       <th class="head">販売ステータス</th>
@@ -40,9 +39,9 @@
       </td>
     </tr>
   </table>
-  <%= link_to edit_admin_item_path(@item) do %>
-    <button>編集する</button>
+  <%= link_to edit_admin_item_path(@item), class: "button" do %>
+    <div>編集する</div>
   <% end %>
-  <%= link_to admin_item_path(@item), method: :delete, data: { confirm: '削除する？' } do %>
-    <button>削除する</button>
+  <%= link_to admin_item_path(@item), method: :delete, data: { confirm: '削除しますか？' }, class: "button" do %>
+    <div>削除する</div>
   <% end %>

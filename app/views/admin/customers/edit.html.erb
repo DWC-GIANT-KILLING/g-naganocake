@@ -3,42 +3,42 @@
 <%= render 'layouts/error', obj: @customer %>
 
 
-<body class="form-container">
+<body>
   <%= form_with model: @customer, url: admin_customer_path do|f| %>
    <table>
       <tr>
-        <th>会員ID</th>
-        <td class="form"><%= @customer.id%></td>
+        <th class="head">会員ID</th>
+        <td class="data"><%= @customer.id%></td>
       </tr>
       <tr>
-        <th>氏名</th>
-        <td class="form"><%= f.text_field :last_name %></td>
-        <td class="form"><%= f.text_field :first_name %></td>
+        <th class="head">氏名</th>
+        <td class="data"><%= f.text_field :last_name %></td>
+        <td class="data"><%= f.text_field :first_name %></td>
       </tr>
       <tr>
-        <th>フリガナ</th>
-        <td class="form"><%= f.text_field :last_name_kana %></td>
-        <td class="form"><%= f.text_field :first_name_kana %></td>
+        <th class="head">フリガナ</th>
+        <td class="data"><%= f.text_field :last_name_kana %></td>
+        <td class="data"><%= f.text_field :first_name_kana %></td>
       </tr>
       <tr>
-        <th>郵便番号</th>
-        <td class="form"><%= f.text_field :postcode %></td>
+        <th class="head">郵便番号</th>
+        <td class="data"><%= f.text_field :postcode %></td>
       </tr>
       <tr>
-        <th>住所</th>
-        <td class="form"><%= f.text_field :address %></td>
+        <th class="head">住所</th>
+        <td class="data"><%= f.text_field :address %></td>
       </tr>
       <tr>
-        <th>電話番号</th>
-        <td class="form"><%= f.text_field :phone_number %></td>
+        <th class="head">電話番号</th>
+        <td class="data"><%= f.text_field :phone_number %></td>
       </tr>
       <tr>
-        <th>メールアドレス</th>
-        <td class="form"><%= f.text_field :email %></td>
+        <th class="head">メールアドレス</th>
+        <td class="data"><%= f.text_field :email %></td>
       </tr>
       <tr>
-        <th>会員ステータス</th>
-        <td class="form">
+        <th class="head">会員ステータス</th>
+        <td class="data">
           <%= f.radio_button :is_deleted, false %>
           <%= f.label "有効"%>
           <%= f.radio_button :is_deleted, true %>
@@ -47,8 +47,8 @@
       </tr>
 
     </table>
-    <div class="form">
-      <%= f.submit '変更を保存',class:"button" %>
+    <div class="container">
+      <%= f.submit '変更を保存', class:"button" %>
     </div>
   <% end %>
 </body>
