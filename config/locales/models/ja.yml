@@ -20,6 +20,8 @@ ja:
           address: "住所"
           phone_number: "電話番号"
           email: "メールアドレス"
+          password: "パスワード"
+          
           
         genre:
           name: "ジャンル"
@@ -28,6 +30,8 @@ ja:
           name: "商品名"
           unit_price: "税抜き価格"
           detail: "商品説明"
+          image: "画像"
+          genre: "ジャンル"
           
           
         order:
@@ -38,10 +42,12 @@ ja:
           address: "住所"
           full_name: "氏名"
           total_price: "請求額"
+          status: "注文ステータス"
           
         order_detail:
           piece: "個数"
           price: "注文価格"
+          status: "製作ステータス"
           
         session:
           signed_in: "ログイン"
@@ -49,6 +55,29 @@ ja:
 
       errors:
         models:
+          address:
+            blank: "を入力してください"
+            
+          cart_item:
+            blank: "を入力してください"
+            
           customer:
             blank: "を入力してください"
+            
+          genre:
+            blank: "を入力してください"
+            
+          item:
+            blank: "を入力してください"
+            required: "を選択してください"
+            
+          order:
+            blank: "を入力してください"
+            
+          order_detail:
+            blank: "を入力してください"
+            
+          session:
+            blank: "を入力してください"
+            
 

@@ -1,48 +1,55 @@
-
+  <div>
+    <%= flash[:notice] %>
+  </div>
+  
   <div>
     <h1><%= @customer.full_name %>さんの会員詳細情報</h1>
   </div>
   
   <div>
-    <table>
+    <table class="table">
       <tr>
-        <th>会員ID</th>
-        <td><%= @customer.id%></td>
+        <th class="head">会員ID</th>
+        <td class="data"><%= @customer.id%></td>
       </tr>
       <tr>
-        <th>氏名</th>
-        <td><%= @customer.last_name %></td>
-        <td><%= @customer.first_name %></td>
+        <th class="head">氏名</th>
+        <td class="data"><%= @customer.last_name %></td>
+        <td class="data"><%= @customer.first_name %></td>
       </tr>
       <tr>
-        <th>フリガナ</th>
-        <td><%= @customer.last_name_kana %></td>
-        <td><%= @customer.first_name_kana %></td>
+        <th class="head">フリガナ</th>
+        <td class="data"><%= @customer.last_name_kana %></td>
+        <td class="data"><%= @customer.first_name_kana %></td>
       </tr>
       <tr>
-        <th>郵便番号</th>
-        <td><%= @customer.postcode %></td>
+        <th class="head">郵便番号</th>
+        <td class="data"><%= @customer.postcode %></td>
       </tr>
       <tr>
         <th>住所</th>
-        <td><%= @customer.address %></td>
+        <td class="data"><%= @customer.address %></td>
       </tr>
       <tr>
-        <th>電話番号</th>
-        <td><%= @customer.phone_number %></td>
+        <th class="head">電話番号</th>
+        <td class="data"><%= @customer.phone_number %></td>
       </tr>
       <tr>
-        <th>メールアドレス</th>
-        <td><%= @customer.email %></td>
+        <th class="head">メールアドレス</th>
+        <td class="data"><%= @customer.email %></td>
       </tr>
       <tr>
-        <th>会員ステータス</th>
-        <td><%= @customer.is_deleted ? '退会' : '有効' %></td>
+        <th class="head">会員ステータス</th>
+        <td class="data"><%= @customer.is_deleted ? '退会' : '有効' %></td>
       </tr>
       
     </table>
   </div>
   <div>
-    <%= link_to "編集", edit_admin_customer_path(@customer.id) %>
-    <%= link_to "注文履歴一覧へ", admin_path %>
+    <%= link_to edit_admin_customer_path(@customer.id) do %>
+      <button>編集</button>
+    <% end %>
+    <%= link_to admin_path do %>
+      <button>注文履歴一覧へ</button>
+    <% end %>
   </div>
