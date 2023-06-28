@@ -19,15 +19,30 @@
   box-sizing: border-box;
 }
 
+/*共通*/
+
 header {
   background-color: #f39800;
   display: flex;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+p {
+  font-size: 20px;
 }
 
 .image-link {
   opacity: 1;
   transition: opacity 0.3s;
 }
+
 
 .image-link:hover {
   opacity: 0.7; /* カーソルを合わせたときの透明度（0.7は例です） */
@@ -180,7 +195,7 @@ main {
 
 .page {
   margin-left: 25%;
-  
+
 }
 
 .table {
@@ -198,6 +213,6 @@ main {
   text-align: left;
 }
 
-.date {
+.data {
   padding: 10px;
 }
