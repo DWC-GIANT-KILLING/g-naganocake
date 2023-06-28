@@ -6,7 +6,10 @@
   background-image: url(naganocakemain.jpg);
   background-size: 100% 100%;
   width: 100%;
-  height: 600px;
+  height: 400px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 20px;
 }
 
 .my-element::after {
@@ -14,19 +17,16 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 24px;
-  color: #fff;
 }
 
-.my-element p {
-  font-size: 24px;
-  color: #ffffff;
-  text-align: center;
+h1 {
+  font-size: 40px;
 }
 
-.new-item-list {
-  display: inline-block;
+h2 {
+  font-size: 30px;
 }
+
 
 .title-new {
   margin: 10px;
