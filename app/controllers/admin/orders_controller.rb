@@ -10,6 +10,9 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = @order.order_details
     if @order.update(order_params)
+      if @order.status == "confirmation"
+        @order_details.update_all(status: "pending")
+      end
       redirect_to admin_order_path(@order)
     else
       render :show
