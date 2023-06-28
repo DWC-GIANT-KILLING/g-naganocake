@@ -11,7 +11,7 @@
           <%= f.radio_button :payment, Order.payments.key(1) %>
           <%= f.label :payment_transfer, Order.payments_i18n[:transfer]%>
         </div>
-  
+
         <h3>お届け先</h3>
         <div class="field">
           <%= f.radio_button :select_address, 0 %>
@@ -44,7 +44,7 @@
           </table>
         </div>
         <div>
-          <%= f.submit "確認画面へ進む", class="button" %>
+          <%= f.submit "確認画面へ進む", class:"button" %>
         </div>
       <% end %>
     </div>
