@@ -1,30 +1,32 @@
 <h1>注文履歴詳細</h1>
  <%= form_with model: @order, url: admin_order_path  do |f| %>
 <table>
-  <tr>
-    <th>購入者</th>
-    <td><%= @order.full_name %></td>
-  </tr>
-  <tr>
-    <th>注文日</th>
-    <td><%= @order.full_name %></td>
-  </tr>
-  <tr>
-    <th>配送先</th>
-    <td><%= @address.address %></td>
-  </tr>
     <tr>
-      <th>支払い方法</th>
-      <td><%= @order.payment %></td>
+      <th>購入者</th>
+      <td><%= @order.full_name %></td>
     </tr>
     <tr>
-      <th>注文ステータス</th>
-      <td><%= f.select :order_status, Order.order_statuses.keys %></td>
-      <td></td>
+      <th>注文日</th>
+      <td><%= @order.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d') %>
     </tr>
-    <%= f.submit '更新' %>
-    <% end %>
-</table>
+    <tr>
+      <th>配送先</th>
+      <td>〒<%= @order.postcode %><br>
+          <%= @order.address %><br>
+          <%= @order.full_name %>
+      </td>
+     </tr>
+     <tr>
+       <th>支払い方法</th>
+       <td><%= @order.payment_i18n %></td>
+     </tr>
+     <tr>
+       <th>注文ステータス</th>
+       <td><%= f.select :status, *[0..4] %></td>
+       <td><%= f.submit '更新'  %></td>
+     </tr>
+     <% end %>
+  </table>
 
 <table>
   <thead>
@@ -37,21 +39,24 @@
     </tr>
   </thead>
   <tbody>
-    <% @items.each do |item| %>
+    <% @order.order_details.each do |order_detail| %>
     <tr>
-      <td><%= item.name %></td>
-      <td><%= item.with_tax_price %></td>
-      <td><%= order_details.piece %></td>
-      <td><%= item.subtotall %></td>
-      <td><%= order_details.status %>
-          <%= link_to "更新" admin_order_path(@order) %>
+      <td><%= order_detail.item.name %></td>
+      <td><%= order_detail.item.with_tax_price %></td>
+      <td><%= order_detail.piece %></td>
+      <td><%= order_detail.subtotal %></td>
+       <%= form_with model: @order_details, url: admin_order_detail_path  do |f| %>
+      <td><%= f.select :status, { '着手不可':0, '制作待ち':1 , '制作中':2 , '制作完了':3} %>
+          <%= f.submit "更新"  %>
+          <% end %>
       </td>
+      <% @price += order_detail.subtotal %>
     </tr>
     <% end %>
   </tbody>
 </table>
 
-<p>商品合計<%= item.with_tax_price %>円</p>
-<p>送料<%= order.delivery_cost %>円</p>
-<p>請求金額合計<%= order.total_price%>円</p>
+<p>商品合計<%= @price %>円</p>
+<p>送料<%= @order.delivery_cost %>円</p>
+<p>請求金額合計<%= @order.total_price%>円</p>
 

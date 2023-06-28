@@ -10,14 +10,16 @@
      </tr>
    </thead>
    <tbody>
-     <% @order.each do |order| %>
+     <% @orders.each do |order| %>
        <tr>
-         <td><%= link_to order.create_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S') %></td>
-         <td><%= orders.full_name %></td>
-         <td><%= order.piece %></td>
-         <td><%= order.order_status %></td>
+         <td><%= link_to  order.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
+         <td><%= order.full_name %></td>
+         <td><%= order.order_details.sum(:piece) %></td>
+         <td><%= order.status_i18n %></td>
        </tr>
      <% end %>
    </tbody>
 </table>
+
+<%= paginate @orders %>
 

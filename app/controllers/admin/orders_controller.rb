@@ -3,20 +3,23 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @price = 0
   end
 
   def update
     @order = Order.find(params[:id])
+    @order_details = @order.order_details
     if @order.update(order_params)
-      flash[:notice] = "更新しました！"
       redirect_to admin_order_path(@order)
+    else
+      render :show
     end
   end
 
   private
 
   def order_params
-    params.require(:order).permit( :customer_id, :delivery_cost, :payment, :address, :postcode, :full_name, :total_price, :status)
+    params.require(:order).permit( :order_detail)
   end
 
 end
