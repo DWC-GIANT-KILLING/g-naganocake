@@ -1,5 +1,5 @@
-<div class="login-container">
-  <div class="login-form">
+<div class="form-container">
+  <div class="form">
     <h2 class="back-color">管理者ログイン</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -13,8 +13,8 @@
         <%= f.password_field :password, autocomplete: "current-password" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "ログイン" %>
+      <div class="">
+        <%= f.submit "ログイン", class:"submit" %>
       </div>
     <% end %>
 

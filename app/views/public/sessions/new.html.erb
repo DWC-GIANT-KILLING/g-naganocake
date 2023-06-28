@@ -1,5 +1,5 @@
-<div class="login-container">
-  <div class="login-form">
+<main>
+  <div class="form">
     <h2 class="back-color">ログイン</h2>
     <div class="back-color">会員の方はこちらからログイン</div>
 
@@ -14,8 +14,8 @@
         <%= f.password_field :password, autocomplete: "current-password" %>
       </div>
 
-      <div class="button">
-        <%= f.submit "ログイン" %>
+      <div class="">
+        <%= f.submit "ログイン", class:"submit" %>
       </div>
     <% end %>
     <div>
@@ -24,4 +24,4 @@
       から登録してください。
     </div>
   </div>
-</div>
+</main>

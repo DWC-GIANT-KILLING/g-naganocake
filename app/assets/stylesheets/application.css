@@ -13,21 +13,34 @@
  *= require_tree .
  *= require_self
  */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-
-.header-1 {
+header {
   background-color: #f39800;
   display: flex;
 }
 
-.header-2 {
-  display: flex;
+.image-link {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.image-link:hover {
+  opacity: 0.7; /* カーソルを合わせたときの透明度（0.7は例です） */
 }
 
 .top-button {
   display: inline-block;
   margin-right: 10px;
   width: 90%;
+}
+.top-button li {
+  list-style: none;
+  padding-left:0
 }
 
 .button-list {
@@ -49,14 +62,13 @@
 .button-list li a {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #77474b;
-  color: #333333;
-  color: #f39800;
+  background-color: #664100;
   text-decoration: none;
+  color: #f39800;
 }
 
 .button-list li a:hover {
-  background-color: #dddddd;
+  opacity: 0.7;
 }
 
 .input {
@@ -64,100 +76,47 @@
 }
 
 /*会員登録*/
-.registration-form {
-  max-width: 1200px;
-  margin-left: 30%;
-}
-
-.registration-form .table {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-.registration-form .form-field {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-.registration-form .form-field label {
-  width: 30%;
-  margin-right: 10px;
-  font-weight: bold;
-}
-
-.registration-form .form-field input[type="text"],
-.registration-form .form-field input[type="email"],
-.registration-form .form-field input[type="password"],
-.registration-form .form-field select {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.registration-form button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.registration-form button:hover {
-  background-color: #0056b3;
-}
-
 /*会員ログイン*/
 
 .back-color {
-
   background-color: #f5f5f5;
-
 }
 
-.login-container {
-  display: flex;
+main {
   justify-content: center;
   align-items: center;
   height: 50vh;
 }
 
-.login-form {
+.form {
   width: 400px;
-  padding: 20px;
-
-  
-  border-radius: 4px;
+  padding: 10px;
 }
 
-.login-form h2 {
+.form h2 {
   font-size: 24px;
   margin-bottom: 10px;
 }
 
-.login-form div {
+.form div {
   margin-bottom: 20px;
 }
 
-.login-form .field label {
+.form .field label {
   font-weight: bold;
 }
 
-.login-form .field input[type="email"],
-.login-form .field input[type="password"] {
+.form .field {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
-.login-form .field .actions {
+.form .field .actions {
   text-align: right;
 }
 
-.login-form .field .actions input[type="submit"] {
+.form .field .actions input[type="submit"] {
   padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
@@ -166,6 +125,79 @@
   cursor: pointer;
 }
 
-.login-form .field .actions input[type="submit"]:hover {
+.form .field .actions input[type="submit"]:hover {
   background-color: #0056b3;
+}
+
+.in-message {
+  margin-top: 20px;
+}
+
+.button {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #664100;
+  text-decoration: none;
+  color: #f39800;
+}
+
+.button:hover {
+  opacity: 0.7;
+}
+
+.submit {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 10pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #664100;     /* 背景色     */
+  color         : #f39800;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #000066;    /* 枠の指定 */
+}
+.submit:hover {
+  opacity: 0.7;
+  box-shadow    : none;        /* カーソル時の影消去 */
+  /*color         : #000066;     /* 背景色     */
+  /*background    : #ffffff;     /* 文字色     */
+}
+
+/*テーブル*/
+
+.info {
+  display: flex;
+  justify-content: center;
+}
+
+.my {
+  width: 100%;
+}
+
+.page {
+  margin-left: 25%;
+  
+}
+
+table {
+  display: flex;
+  justify-content: center;
+}
+
+.tr {
+  max-width: 600px;
+}
+
+.head {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: left;
+}
+
+.date {
+  padding: 10px;
 }
