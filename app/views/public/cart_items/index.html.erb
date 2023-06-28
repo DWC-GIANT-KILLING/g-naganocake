@@ -1,12 +1,10 @@
 <%= flash[:notice] %>
-
   <div class="">
     <h1>カート</h1>
     <%= link_to cart_items_destroy_all_path(@customer), method: :delete do %>
       <button class="button">カートを空にする</button>
     <% end %>
   </div>
-    
   <% if @customer.cart_items.exists? %>
     <% @customer.cart_items.each do |cart_item|%>
       <table>
@@ -19,6 +17,7 @@
             <th class="head"></th>
           </thead>
         </tr>
+
         <tr>
           <tbody>
             <td class="date"><%= cart_item.item.name %></td>
@@ -27,7 +26,7 @@
               <%= form_with model: cart_item do|f| %>
                 <%= f.hidden_field :id, :value =>cart_item.id %>
                 <%= f.select :piece, *[0..10] %>
-                <%= f.submit '編集' , url: cart_item_path(cart_item), class:"button", method: :patch %>
+                <%= f.submit '更新' , url: cart_item_path(cart_item), class:"button", method: :patch %>
               <% end %>
             </td>
             <td class="date"><%= cart_item.subtotal %></td>
@@ -41,21 +40,14 @@
         </tr>
       </table>
     <% end %>
-
-
-<%= link_to items_path do %>
-  <button class="button">買い物を続ける</button>
-<% end %>
-
+    <%= link_to items_path do %>
+      <button class="button">買い物を続ける</button>
+    <% end %>
     <h5>合計金額</h5>
       <%= @price %>
-
-
     <%= link_to new_order_path do %>
       <button class="button">情報入力に進む</button>
     <% end %>
-
   <% else %>
     <h3>カートに商品がありません</h3>
-
 <% end %>

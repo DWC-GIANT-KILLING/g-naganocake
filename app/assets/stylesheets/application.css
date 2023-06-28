@@ -183,7 +183,7 @@ main {
   
 }
 
-table {
+.table {
   display: flex;
   justify-content: center;
 }

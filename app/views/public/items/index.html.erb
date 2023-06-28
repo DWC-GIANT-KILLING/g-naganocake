@@ -1,23 +1,33 @@
-<div class="index-container">
-  <h1 class="index">商品一覧</h1>
-  <div class="container">
-    <% @items.each do |item| %>
-      <div class="block">
-        <td class="item">
-          <%= link_to item_path(item) do %>
-            <div class="">
-            <% if item.image.attached? %>
-              <%= image_tag item.get_item_image(150,200), class:"image" %>
-            <% else %>
-              <%= image_tag 'no_image', class:"image"%>
-            <% end %>
-            </div>
-          <% end %>
-        </td>
-        <td class="name"><%= item.name %></td>
-        <td class="price">¥<%= item.unit_price %></td>
-      </div>
-    <% end %>
-  </div>
-  <%= paginate @items %>
+<div class="container">
+<h1>商品一覧</h1>
+<div class="index">
+<table>
+   <% @items.each do |item| %>
+  <div class="block">
+  <tr>
+    <td>
+      <%= link_to item_path(item) do %>
+        <% if item.image.attached? %>
+          <%= image_tag item.get_item_image(300,400), class:"image" %>
+        <% else %>
+          <%= image_tag 'no_image', class:"image" %>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td><%= item.name %></td>
+  </tr>
+  <tr>
+    <td>¥<%= item.unit_price %></td>
+  </tr>
+  <tr>
+    <td><%= item.is_selling ? '販売中' : '売り切れ' %></td>
+  </tr>
+</div>
+  <% end %>
+</table>
+</div>
+
+<%= paginate @items %>
 </div>
