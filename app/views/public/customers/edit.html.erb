@@ -1,64 +1,66 @@
-<div>
-  <div class="tag">
-    <h class="head">会員情報</h>
-    <%= render 'layouts/error', obj: @customer %>
-    <div></div>
-  </div>
-  <div>
-    <%= form_with model: @customer, url: customers_update_path, method: :patch do |f| %>
-      <table>
-        <tr class="tr">
-          <th class="head">名前</th>
-          <td class="date"><%= f.label :last_name, "(姓)"%></td>
-          <td class="date"><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %></td>
-          <td class="date"><%= f.label :first_name, "(名)"%></td>
-          <td class="date"><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
-        </tr>
-        <tr class="tr">
-          <th class="head">フリガナ</th>
-          <td class="date"><%= f.label :last_name_kana, "(セイ)"%></td>
-          <td class="date"><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %></td>
-          <td class="date"><%= f.label :first_name_kana, "(メイ)"%></td>
-          <td class="date"><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %></td>
-        </tr>
-        <tr class="tr">
-          <th class="head"><%= f.label :email, "メールアドレス"%></th>
-          <td class="date"></td>
-          <td class="date"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-          <td class="date"></td>
-          <td class="date"></td>
-        </tr>
-        <tr class="tr">
-          <th class="head"><%= f.label :postcode, "郵便番号" %></th>
-          <td class="date"></td>
-          <td class="date"><%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %></td>
-          <td class="date"></td>
-          <td class="date"></td>
-        </tr>
-        <tr class="tr">
-          <th class="head"><%= f.label :address, "住所" %></th>
-          <td class="date"></td>
-          <td class="date"><%= f.text_field :address, autofocus: true, autocomplete: "address" %></td>
-        </tr>
-        <tr class="tr">
-          <th class="head"><%= f.label :phone_number, "電話番号" %></th>
-          <td class="date"></td>
-          <td class="date"><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %></td>
-          <td class="date"></td>
-          <td class="date"></td>
-        </tr>
-        <tr class="tr">
-          <td class="date"></td>
-          <td class="date"></td>
-          <td class="date"><%= f.submit "編集内容を保存", class:"button" %></td>
-          <td class="date"></td>
-          <td class="date">
-            <%= link_to customers_check_path do %>
-	        		<button class="button">退会する</button>
-	          <% end %>
-		      </td>
-        </tr>
-      </table>
-    <% end %>
-  </div>
-</div>
+  <main>
+    <div>
+      <div class="container">
+        <h1>会員情報</h1>
+        <%= render 'layouts/error', obj: @customer %>
+        <div></div>
+      </div>
+      <div>
+        <%= form_with model: @customer, url: customers_update_path, method: :patch do |f| %>
+          <table>
+            <tr class="tr">
+              <th class="head">名前</th>
+              <td class="data"><%= f.label :last_name, "(姓)"%></td>
+              <td class="data"><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %></td>
+              <td class="data"><%= f.label :first_name, "(名)"%></td>
+              <td class="data"><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
+            </tr>
+            
+            <tr class="tr">
+              <th class="head">フリガナ</th>
+              <td class="data"><%= f.label :last_name_kana, "(セイ)"%></td>
+              <td class="data"><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %></td>
+              <td class="data"><%= f.label :first_name_kana, "(メイ)"%></td>
+              <td class="data"><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %></td>
+            </tr>
+            
+            <tr class="tr">
+              <th class="head"><%= f.label :email, "メールアドレス"%></th>
+              <td class="data"></td>
+              <td class="data"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            </tr>
+            
+            <tr class="tr">
+              <th class="head"><%= f.label :postcode, "郵便番号" %></th>
+              <td class="data"></td>
+              <td class="data"><%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %></td>
+            </tr>
+            
+            <tr class="tr">
+              <th class="head"><%= f.label :address, "住所" %></th>
+              <td class="data"></td>
+              <td class="data"><%= f.text_field :address, autofocus: true, autocomplete: "address" %></td>
+            </tr>
+            
+            <tr class="tr">
+              <th class="head"><%= f.label :phone_number, "電話番号" %></th>
+              <td class="data"></td>
+              <td class="data"><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %></td>
+            </tr>
+            
+            <tr class="tr">
+              <td class="data"></td>
+              <td class="data"></td>
+              <td class="data"><%= f.submit "編集内容を保存", class:"button" %></td>
+              <td class="data"></td>
+              <td class="date">
+                <%= link_to customers_check_path do %>
+    	        		<button class="button">退会する</button>
+    	          <% end %>
+    		      </td>
+            </tr>
+          </table>
+        <% end %>
+      </div>
+    </div>
+  </main?

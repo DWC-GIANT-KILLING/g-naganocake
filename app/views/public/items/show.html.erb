@@ -18,7 +18,7 @@
     
     <%= f.hidden_field :item_id, :value => @item.id %>
     <%= f.select :piece, *[1..10] %>
-    <%= f.submit 'カートに入れる' %>
+    <%= f.submit 'カートに入れる', class: "button" %>
     
     <% end %>
     
