@@ -1,58 +1,57 @@
 <%= flash[:notice] %>
 
-<h1>カート</h1>
-<%= link_to root_path do %>
-  <button>買い物を続ける</button>
-<% end %>
-<% if @customer.cart_items.exists? %>
+  <div class="">
+    <h1>カート</h1>
+    <%= link_to cart_items_destroy_all_path(@customer), method: :delete do %>
+      <button class="button">カートを空にする</button>
+    <% end %>
+  </div>
+  <% if @customer.cart_items.exists? %>
+    <% @customer.cart_items.each do |cart_item|%>
+
       <table>
         <tr>
           <thead>
-            <th>商品名</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th></th>
+            <th class="head">商品名</th>
+            <th class="head">単価(税込)</th>
+            <th class="head">数量</th>
+            <th class="head">小計</th>
+            <th class="head"></th>
           </thead>
         </tr>
 
         <tr>
           <tbody>
-            <% @customer.cart_items.each do |cart_item|%>
-            <td><%= cart_item.item.name %></td>
-            <td><%= cart_item.item.with_tax_price %></td>
-            <td>
+
+            <td class="date"><%= cart_item.item.name %></td>
+            <td class="date"><%= cart_item.item.with_tax_price %></td>
+            <td class="date">
+
               <%= form_with model: cart_item do|f| %>
                 <%= f.hidden_field :id, :value =>cart_item.id %>
                 <%= f.select :piece, *[0..10] %>
-                <%= f.submit '更新' , url: cart_item_path(cart_item), method: :patch %>
+                <%= f.submit '更新' , url: cart_item_path(cart_item), class:"button", method: :patch %>
               <% end %>
             </td>
-            <td><%= cart_item.subtotal %></td>
+            <td class="date"><%= cart_item.subtotal %></td>
             <% @price += cart_item.subtotal %>
             <td>
               <%= link_to cart_item_path(cart_item), method: :delete do%>
-                <button>削除する</button>
+                <button class="button">削除する</button>
               <% end %>
             </td>
-
           </tbody>
         </tr>
       </table>
     <% end %>
-
+    <%= link_to items_path do %>
+      <button class="button">買い物を続ける</button>
+    <% end %>
     <h5>合計金額</h5>
       <%= @price %>
-
-    <%= link_to cart_items_destroy_all_path(@customer), method: :delete do %>
-      <button>カートを空にする</button>
-    <% end %>
-
     <%= link_to new_order_path do %>
-      <button>情報入力に進む</button>
+      <button class="button">情報入力に進む</button>
     <% end %>
-
   <% else %>
     <h3>カートに商品がありません</h3>
-
 <% end %>
