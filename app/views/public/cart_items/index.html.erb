@@ -5,7 +5,6 @@
   <button>買い物を続ける</button>
 <% end %>
 <% if @customer.cart_items.exists? %>
-    <% @customer.cart_items.each do |cart_item|%>
       <table>
         <tr>
           <thead>
@@ -19,7 +18,7 @@
 
         <tr>
           <tbody>
-
+            <% @customer.cart_items.each do |cart_item|%>
             <td><%= cart_item.item.name %></td>
             <td><%= cart_item.item.with_tax_price %></td>
             <td>
