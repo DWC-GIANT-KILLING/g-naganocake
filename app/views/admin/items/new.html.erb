@@ -5,27 +5,27 @@
    <table>
       <tr>
         <th>商品画像</th>
-        <td class="form"><%= f.file_field :image, accept: "image*" %></td>
+        <td class="field"><%= f.file_field :image, accept: "image*" %></td>
       </tr>
       <tr>
         <th>商品名</th>
-        <td class="form"><%= f.text_field :name %></td>
+        <td class="field"><%= f.text_field :name %></td>
       </tr>
       <tr>
         <th>商品説明</th>
-        <td class="form"><%= f.text_area :detail %></td>
+        <td class="field"><%= f.text_area :detail %></td>
       </tr>
       <tr>
         <th>ジャンル</th>
-        <td class="form"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {include_blank: '---'} %></td>
+        <td class="field"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {include_blank: '---'} %></td>
       </tr>
       <tr>
         <th>税抜価格</th>
-        <td class="form"><%= f.text_field :unit_price %>円</td>
+        <td class="field"><%= f.text_field :unit_price %>円</td>
       </tr>
       <tr>
         <th>販売ステータス</th>
-          <td class="form">
+          <td class="field">
               <%= f.label :is_selling, '販売中' %>
               <%= f.radio_button :is_selling, :true %>
               <%= f.label :is_selling, '売り切れ' %>
@@ -33,8 +33,8 @@
           </td>
       </tr>
     </table>
-    <div class="form">
-      <%= f.submit'新規登録' %>
+    <div>
+      <%= f.submit'新規登録', class="button" %>
     </div>
   <% end %>
 </body>
