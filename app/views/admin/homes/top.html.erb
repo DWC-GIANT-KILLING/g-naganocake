@@ -13,7 +13,7 @@
      <% @orders.each do |order| %>
        <tr>
          <td><%= link_to  order.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
-         <td><%= order.full_name %></td>
+         <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
          <td><%= order.order_details.sum(:piece) %></td>
          <td><%= order.status_i18n %></td>
        </tr>
