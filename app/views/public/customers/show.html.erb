@@ -1,64 +1,71 @@
 <div>
-	<% if flash[:notice].present? %>
+	<div class="">
+		<% if flash[:notice].present? %>
   		<div class="alert alert-success">
     		<%= flash[:notice] %>
   		</div>
-	<% end %>
-	<h5>マイページ</h5>
-	<div>
-		<h6>登録情報</h6>
-		<%= link_to customers_information_edit_path do %>
-			<button>編集する</button>
 		<% end %>
+		
+		<div class="my">
+			<h1 class="page">マイページ</h1>
+		</div>
+		
+		<div class="info">
+			<div class="">登録情報</div>
+			<div class="date">
+				<%= link_to customers_information_edit_path do %>
+					<button class="button">編集する</button>
+				<% end %>
+			</div>
+		</div>
 	</div>
+
 	<table>
-		<tr>
-			<td>名前</td>
-			<td>
+		<tr class="tr">
+			<th class="head">名前</th>
+			<td class="date">
 				<%= @customer.last_name %>
 				<%= @customer.first_name %>
 			</td>
 		</tr>
-		<tr>
-			<td>カナ</td>
-			<td>
+		<tr class="tr">
+			<th class="head">カナ</th>
+			<td class="date">
 				<%= @customer.last_name_kana %>
 				<%= @customer.first_name_kana %>
 			</td>
 		</tr>
 
-		<tr>
-			<td>郵便番号</td>
-			<td>〒<%= @customer.postcode %></td>
+		<tr class="tr">
+			<th class="head">郵便番号</th>
+			<td class="date">〒<%= @customer.postcode %></td>
 		</tr>
-		<tr>
-			<td>住所</td>
-			<td><%= @customer.address %></td>
+		<tr class="tr">
+			<th class="head">住所</th>
+			<td class="date"><%= @customer.address %></td>
 		</tr>
-		<tr>
-			<td>電話番号</td>
-			<td><%= @customer.phone_number %></td>
+		<tr class="tr">
+			<th class="head">電話番号</th>
+			<td class="date"><%= @customer.phone_number %></td>
 		</tr>
-		<tr>
-			<td>メールアドレス</td>
-			<td><%= @customer.email %></td>
+		<tr class="tr">
+			<th class="head">メールアドレス</th>
+			<td class="date"><%= @customer.email %></td>
 		</tr>
-	</table>
 
-	<table>
-		<tr>
-			<td><h6>配送先</h6></td>
-			<td>
+		<tr class="tr">
+			<th class="head">配送先</th>
+			<td class="date">
 				<%= link_to addresses_path do %>
-					<button>一覧を見る</button>
+					<button class="button">一覧を見る</button>
 				<% end %>
 			</td>
 		</tr>
-		<tr>
-			<td><h6>注文履歴</h6></td>
-			<td>
+		<tr class="tr">
+			<th class="head">注文履歴</th>
+			<td class="date">
 				<%= link_to orders_path do %>
-					<button>一覧を見る</button>
+					<button class="button">一覧を見る</button>
 				<% end %>
 			</td>
 		</tr>

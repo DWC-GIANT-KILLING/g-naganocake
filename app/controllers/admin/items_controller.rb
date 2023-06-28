@@ -2,7 +2,7 @@ class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page])
   end
 
   def new
@@ -12,7 +12,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      flash[:noticce] = "アイテムが追加されました！"
+      flash[:notice] = "アイテムが追加されました！"
      redirect_to admin_item_path(@item)
     else
      render :new
@@ -40,6 +40,7 @@ class Admin::ItemsController < ApplicationController
   def destroy
     item = Item.find(params[:id])
     item.destroy
+    flash[:notice] = "商品を削除しました"
     redirect_to admin_items_path
   end
 
