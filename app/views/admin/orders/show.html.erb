@@ -1,5 +1,5 @@
 <h1>注文履歴詳細</h1>
- <%= form_with model: @order, url: admin_order_path  do |f| %>
+ <%= form_with model: @order, url: admin_order_path, method: :patch  do |f| %>
 <table>
     <tr>
       <th>購入者</th>
@@ -22,7 +22,7 @@
      </tr>
      <tr>
        <th>注文ステータス</th>
-       <td><%= f.select :status, *[0..4] %></td>
+       <td><%= f.select :status, Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]},class: "form-control"%></td>
        <td><%= f.submit '更新'  %></td>
      </tr>
      <% end %>
@@ -45,8 +45,9 @@
       <td><%= order_detail.item.with_tax_price %></td>
       <td><%= order_detail.piece %></td>
       <td><%= order_detail.subtotal %></td>
-       <%= form_with model: @order_details, url: admin_order_detail_path  do |f| %>
-      <td><%= f.select :status, { '着手不可':0, '制作待ち':1 , '制作中':2 , '制作完了':3} %>
+      <td>
+       <%= form_with model: order_detail, url: admin_order_detail_path(order_detail)  do |f| %>
+       <%= f.select :status, OrderDetail.statuses.keys.map{|k| [I18n.t("enums.order_detail.status.#{k}"), k]},class: "form-control"%>
           <%= f.submit "更新"  %>
           <% end %>
       </td>
