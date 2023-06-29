@@ -1,27 +1,57 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
  # 顧客用
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
 
+   scope module: :public do
+
+    root to: 'homes#top'
+
+    get 'about'=>'homes#about'
+
+    resources :items, only: [:index,:show]
+
+    get 'customers/mypage'=>'customers#show'
+    get 'customers/information/edit'=>'customers#edit'
+    patch 'customers/update'=>'customers#update'
+    get 'customers/check'
+    patch 'customers/withdraw'
+
+    delete 'cart_items/destroy_all'
+    resources :cart_items, only: [:index,:update,:create,:destroy]
+
+    post 'orders/check'
+    get 'orders/thanx'
+    resources :orders, only: [:new,:index,:show,:create]
+
+    resources :addresses, only: [:index,:edit,:create,:update,:destroy]
+
+ end
+
+
  # 管理者用
   devise_for :admin, skip:[:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
 
-   root to: 'public/homes#top'
+  namespace :admin do
 
-   scope module: :public do
+    get '/'=>'homes#top'
 
-   end
 
-   namespace :admin do
+
+    resources :items
+
+    resources :genres, only: [:index,:edit,:create,:update,:destroy]
+
+    resources :customers, only: [:index,:show,:edit,:update]
+
+    resources :orders, only: [:show,:update]
+
+    resources :order_details, only: [:update]
 
    end
 

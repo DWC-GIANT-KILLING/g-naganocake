@@ -1,0 +1,65 @@
+<main>
+	<div class="container">
+		<% if flash[:notice].present? %>
+  		<div class="alert alert-success">
+    		<%= flash[:notice] %>
+  		</div>
+		<% end %>
+
+		<h1>マイページ</h1>
+		<div>
+			<%= link_to customers_information_edit_path do %>
+				<button class="button">編集する</button>
+			<% end %>
+		</div>
+	</div>
+
+	<table>
+		<tr class="tr">
+			<th class="head">名前</th>
+			<td class="data">
+				<%= @customer.last_name %>
+				<%= @customer.first_name %>
+			</td>
+		</tr>
+		<tr class="tr">
+			<th class="head">カナ</th>
+			<td class="data">
+				<%= @customer.last_name_kana %>
+				<%= @customer.first_name_kana %>
+			</td>
+		</tr>
+
+		<tr class="tr">
+			<th class="head">郵便番号</th>
+			<td class="data">〒<%= @customer.postcode %></td>
+		</tr>
+		<tr class="tr">
+			<th class="head">住所</th>
+			<td class="data"><%= @customer.address %></td>
+		</tr>
+		<tr class="tr">
+			<th class="head">電話番号</th>
+			<td class="data"><%= @customer.phone_number %></td>
+		</tr>
+		<tr class="tr">
+			<th class="head">メールアドレス</th>
+			<td class="data"><%= @customer.email %></td>
+		</tr>
+
+		<tr class="tr">
+			<td class="data">
+				<%= link_to addresses_path do %>
+					<button class="button">配送先一覧を見る</button>
+				<% end %>
+			</td>
+		</tr>
+		<tr class="tr">
+			<td class="data">
+				<%= link_to orders_path do %>
+					<button class="button">注文履歴を見る</button>
+				<% end %>
+			</td>
+		</tr>
+	</table>
+</main>

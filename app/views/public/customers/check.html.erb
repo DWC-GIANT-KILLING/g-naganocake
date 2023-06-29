@@ -1,0 +1,20 @@
+<div>
+  <div>
+    <h1>本当に退会しますか？</h1>
+  </div>
+  <div>
+    退会すると、会員登録情報やこれまでの購入履歴が閲覧できなくなります。
+  </div>
+  <div>
+    退会する場合は「退会する」をクリックしてください。
+  </div>
+  <div>
+    <%= link_to customers_information_edit_path do %>
+      <button class="button">退会しない</button>
+    <% end %>
+    
+    <%= link_to customers_withdraw_path, method: :patch do %>
+      <button class="button">退会する</button>
+    <% end %>
+  </div>
+</div>

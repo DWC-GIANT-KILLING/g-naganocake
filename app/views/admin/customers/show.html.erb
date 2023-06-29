@@ -1,0 +1,55 @@
+  <div>
+    <%= flash[:notice] %>
+  </div>
+  
+  <div>
+    <h1><%= @customer.full_name %>さんの会員詳細情報</h1>
+  </div>
+  
+  <div>
+    <table>
+      <tr>
+        <th class="head">会員ID</th>
+        <td class="data"><%= @customer.id%></td>
+      </tr>
+      <tr>
+        <th class="head">氏名</th>
+        <td class="data"><%= @customer.last_name %></td>
+        <td class="data"><%= @customer.first_name %></td>
+      </tr>
+      <tr>
+        <th class="head">フリガナ</th>
+        <td class="data"><%= @customer.last_name_kana %></td>
+        <td class="data"><%= @customer.first_name_kana %></td>
+      </tr>
+      <tr>
+        <th class="head">郵便番号</th>
+        <td class="data"><%= @customer.postcode %></td>
+      </tr>
+      <tr>
+        <th class="head">住所</th>
+        <td class="data"><%= @customer.address %></td>
+      </tr>
+      <tr>
+        <th class="head">電話番号</th>
+        <td class="data"><%= @customer.phone_number %></td>
+      </tr>
+      <tr>
+        <th class="head">メールアドレス</th>
+        <td class="data"><%= @customer.email %></td>
+      </tr>
+      <tr>
+        <th class="head">会員ステータス</th>
+        <td class="data"><%= @customer.is_deleted ? '退会' : '有効' %></td>
+      </tr>
+      
+    </table>
+  </div>
+  <div class="container">
+    <%= link_to edit_admin_customer_path(@customer.id), class: "button" do %>
+      <div>編集</div>
+    <% end %>
+    <%= link_to admin_path, class: "button" do %>
+      <div>注文履歴一覧</div>
+    <% end %>
+  </div>

@@ -1,0 +1,83 @@
+ja:
+
+    activerecord:
+      attributes:
+        address:
+          postcode: "郵便番号"
+          address: "住所"
+          full_name: "氏名"
+          
+        cart_item:
+            piece: "個数"
+          
+          
+        customer:
+          last_name: "姓"
+          last_name_kana: "姓のフリガナ"
+          first_name: "名"
+          first_name_kana: "名のフリガナ"
+          postcode: "郵便番号"
+          address: "住所"
+          phone_number: "電話番号"
+          email: "メールアドレス"
+          password: "パスワード"
+          
+          
+        genre:
+          name: "ジャンル"
+          
+        item:
+          name: "商品名"
+          unit_price: "税抜き価格"
+          detail: "商品説明"
+          image: "画像"
+          genre: "ジャンル"
+          
+          
+        order:
+          delivery_cost: "送料"
+          payment: "支払い方法"
+          address: "住所"
+          postcode: "郵便番号"
+          address: "住所"
+          full_name: "氏名"
+          total_price: "請求額"
+          status: "注文ステータス"
+          
+        order_detail:
+          piece: "個数"
+          price: "注文価格"
+          status: "製作ステータス"
+          
+        session:
+          signed_in: "ログイン"
+
+
+      errors:
+        models:
+          address:
+            blank: "を入力してください"
+            
+          cart_item:
+            blank: "を入力してください"
+            
+          customer:
+            blank: "を入力してください"
+            
+          genre:
+            blank: "を入力してください"
+            
+          item:
+            blank: "を入力してください"
+            required: "を選択してください"
+            
+          order:
+            blank: "を入力してください"
+            
+          order_detail:
+            blank: "を入力してください"
+            
+          session:
+            blank: "を入力してください"
+            
+

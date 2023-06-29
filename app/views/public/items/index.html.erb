@@ -1,0 +1,22 @@
+<main>
+  <h1>商品一覧</h1>
+  <div class="container">    
+       <% @items.each do |item| %>
+    <div class="item">
+      <div class="image">
+        <%= link_to item_path(item) do %>
+          <% if item.image.attached? %>
+            <%= image_tag item.get_item_image(300,400), class:"image" %>
+          <% else %>
+            <%= image_tag 'no_image', class:"image" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div><%= item.name %></div>
+      <div>¥<%= item.unit_price %></div>
+      <div><%= item.is_selling ? '販売中' : '売り切れ' %></div>
+    </div>
+      <% end %>
+  </div>
+  <%= paginate @items %>
+</main>

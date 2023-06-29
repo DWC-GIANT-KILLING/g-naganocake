@@ -6,11 +6,89 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      
+      <div class="top-button">
+        <li>
+          <%= link_to root_path, class: "image-link" do %>
+            <%= image_tag("naganocakelogo.png", alt: "Naganocake_LOGO", width: "170", height: "150") %>
+          <% end %>
+        </li>
+      </div>
+      
+      <div>
+        <div class="nav">
+          <ul class="button-list">
+            <% if customer_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "マイページ", customers_mypage_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "商品一覧", items_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "カート", cart_items_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to"ログアウト", destroy_customer_session_path, method: :delete %>
+              </li>
+            <% elsif admin_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "商品一覧", admin_items_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to"会員一覧", admin_customers_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "注文履歴", admin_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ジャンル", admin_genres_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "About", about_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to"商品一覧", items_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to"会員登録", new_customer_registration_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログイン", new_customer_session_path %><br>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+  
+        <div class="nav">
+          <% if customer_signed_in? %>
+            <div class="input">ようこそ、<%= current_customer.last_name %>さん！</div>
+          <% elsif admin_signed_in? %>
+            <div class="input">ようこそ、管理者さん！</div>
+          <% end %>
+          
+          <div class="input">
+            <%= form_with(url: items_path, method: :get) do |f| %>
+              <%= f.text_field :query, value: params[:query], placeholder: "検索", aria_label: "検索" %>
+              <div class="input">
+                <%= f.submit "検索" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    </header>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,86 @@
+  <main>
+    <div class="container">
+    <h1>注文履歴詳細</h1>
+    </div>
+    
+    <%= form_with model: @order, url: admin_order_path, method: :patch  do |f| %>
+      <table>
+        <tr>
+          <th class="head">購入者</th>
+          <td>
+            <%= link_to admin_customer_path(@order.customer_id) do %>
+              <%= @order.customer.full_name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th class="head">注文日</th>
+          <td><%= @order.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d') %>
+        </tr>
+        <tr>
+          <th class="head">配送先</th>
+          <td>〒<%= @order.postcode %><br>
+              <%= @order.address %><br>
+              <%= @order.full_name %>
+          </td>
+         </tr>
+         <tr>
+           <th class="head">支払い方法</th>
+           <td><%= @order.payment_i18n %></td>
+         </tr>
+         <tr>
+           <th class="head">注文ステータス</th>
+           <td><%= f.select :status, Order.statuses.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]},class: "form-control"%></td>
+           <td><%= f.submit '更新', class: "button" %></td>
+         </tr>
+      </table>
+    <% end %>
+    <h2>&nbsp;</h2>
+    
+    <table>
+      <thead>
+        <tr>
+          <th class="head">商品名</th>
+          <th class="head">単価(税込)</th>
+          <th class="head">数量</th>
+          <th class="head">小計</th>
+          <th class="head">制作ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.order_details.each do |order_detail| %>
+        <tr>
+          <td class="data"><%= order_detail.item.name %></td>
+          <td class="data"><%= order_detail.item.with_tax_price %>円</td>
+          <td class="data"><%= order_detail.piece %></td>
+          <td class="data"><%= order_detail.subtotal %>円</td>
+          <td>
+            <%= form_with model: order_detail, url: admin_order_detail_path(order_detail)  do |f| %>
+            <%= f.select :status, OrderDetail.statuses.keys.map{|k| [I18n.t("enums.order_detail.status.#{k}"), k]},class: "form-control"%>
+              <%= f.submit "更新", class: "button"%>
+            <% end %>
+          </td>
+          <% @price += order_detail.subtotal %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <h2>&nbsp;</h2>
+  
+    <table>
+      
+        <tr>
+          <th class="head">商品合計</th>
+          <td class="data"><%= @price %>円</td>
+        </tr>
+        <tr>
+          <th class="head">送料</th>
+          <td class="data"><%= @order.delivery_cost %>円</td>
+        </tr>
+        <tr>
+        <th class="head">請求金額合計</th>
+        <td class="data"><%= @order.total_price%>円</td>
+        </tr>
+    </table>
+  </main>
