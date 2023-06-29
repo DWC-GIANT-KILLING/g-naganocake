@@ -1,74 +1,74 @@
-<h1>注文情報確認</h1>
+  <main>
 
-  <div>
-    <table class="table">
-      <tr>
-        <th class="head">商品名</th>
-        <th class="head">単価（税込）</th>
-        <th class="head">数量</th>
-        <th class="head">小計</th>
-      </tr>
-  
-    <% @cart_items.each do |cart_item| %>
-      </tr>
-        <td class="data">
-          <!--%= image_tag cart_item.item.get_image(70,100) % -->
-          <%= cart_item.item.name %>
-        </td>
-        <td class="data">
-          <%= cart_item.item.with_tax_price.to_s(:delimited) %>
-        </td>
-        <td class="data">
-          <%= cart_item.piece %>
-        </td>
-        <td class="data">
-          <%= cart_item.subtotal.to_s(:delimited) %>
-          <% @price += cart_item.subtotal %>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-    <table>
-      <tr>
-        <th class="head">送料</th>
-        <td class="data"><%= @order.delivery_cost = 800 %></td>
-      </tr>
-      <tr>
-        <th class="head">商品合計</th>
-        <td class="data"><%= @price.to_s(:delimited)%></td>
-      </tr>
-      <tr>
-        <th class="head">請求金額</th>
-          <%= @order.total_price = @order.delivery_cost + @price.to_i %>
-        <td class="data"><%= @order.total_price.to_s(:delimited) %></td>
-      </tr>
-    </table>
-  </div>
-  
-  <div>
-    <h3>支払方法</h3>
-    <%= @order.payment_i18n %>
-  </div>
-  <div>
-    <h3>お届け先</h3>
-    <div>
-      〒<%= @order.postcode %><%= @order.address %><br>
-      <%= @order.full_name%>
+    <div class="container">
+      <h1>注文情報確認</h1>
     </div>
-  </div>
-  <div class="form_container">
-    <div class="form">
-      <%= form_with model: @order, url:orders_path, method: :post, local:true do |f| %>
-      <%= f.hidden_field :address %>
-      <%= f.hidden_field :postcode%>
-      <%= f.hidden_field :full_name %>
-      <%= f.hidden_field :payment %>
-      <%= f.hidden_field :delivery_cost %>
-      <%= f.hidden_field :total_price, :value => @order.total_price %>
-         
-        <div class="field">
-          <%= f.submit "注文を確定する" %>
+
+    <div>
+      <table>
+        <tr>
+          <thead>
+          <th class="head">商品名</th>
+          <th class="head">単価（税込）</th>
+          <th class="head">数量</th>
+          <th class="head">小計</th>
+          </thead>
+        </tr>
+
+        </tr>
+          <% @cart_items.each do |cart_item| %>
+            <tbody>
+              <td class="data"><%= cart_item.item.name %></td>
+              <td class="data"><%= cart_item.item.with_tax_price %>円</td>
+              <td class="data"><%= cart_item.piece %></td>
+              <td class="data"><%= cart_item.subtotal %><% @price += cart_item.subtotal %>円</td>
+            </tbody>
+          <% end %>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <th class="head">送料</th>
+          <td class="data"><%= @order.delivery_cost = 800 %>円</td>
+        </tr>
+        <tr>
+          <th class="head">商品合計</th>
+          <td class="data"><%= @price%>円</td>
+        </tr>
+        <tr>
+          <th class="head">請求金額</th>
+          <td class="data"><%= @order.total_price = @order.delivery_cost.to_i + @price.to_i %>円</td>
+        </tr>
+        <tr>
+          <th class="head">支払方法</h3>
+          <td class=data><%= @order.payment_i18n %></td>
+        </tr>
+        <tr>
+        <th class="head">お届け先</h3>
+          <td class="data">
+            〒<%= @order.postcode %>
+            <%= @order.address %>
+            <%= @order.full_name%>
+            </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="container">
+      <div>
+        <%= form_with model: @order, url:orders_path, method: :post, local:true do |f| %>
+        <%= f.hidden_field :address %>
+        <%= f.hidden_field :postcode%>
+        <%= f.hidden_field :full_name %>
+        <%= f.hidden_field :payment %>
+        <%= f.hidden_field :delivery_cost, :value => @order.delivery_cost %>
+        <%= f.hidden_field :total_price, :value => @order.total_price %>
+
+        <div>
+          <%= f.submit "注文を確定する", class:"button"%>
         </div>
+        <% end %>
       </div>
-  </div>
-<% end %>
+    </div>
+  </main>

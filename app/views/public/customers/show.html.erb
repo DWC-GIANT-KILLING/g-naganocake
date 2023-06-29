@@ -1,36 +1,30 @@
-<div>
-	<div class="">
+<main>
+	<div class="container">
 		<% if flash[:notice].present? %>
   		<div class="alert alert-success">
     		<%= flash[:notice] %>
   		</div>
 		<% end %>
-		
-		<div class="my">
-			<h1 class="page">マイページ</h1>
-		</div>
-		
-		<div class="info">
-			<div class="">登録情報</div>
-			<div class="date">
-				<%= link_to customers_information_edit_path do %>
-					<button class="button">編集する</button>
-				<% end %>
-			</div>
+
+		<h1>マイページ</h1>
+		<div>
+			<%= link_to customers_information_edit_path do %>
+				<button class="button">編集する</button>
+			<% end %>
 		</div>
 	</div>
 
 	<table>
 		<tr class="tr">
 			<th class="head">名前</th>
-			<td class="date">
+			<td class="data">
 				<%= @customer.last_name %>
 				<%= @customer.first_name %>
 			</td>
 		</tr>
 		<tr class="tr">
 			<th class="head">カナ</th>
-			<td class="date">
+			<td class="data">
 				<%= @customer.last_name_kana %>
 				<%= @customer.first_name_kana %>
 			</td>
@@ -38,36 +32,34 @@
 
 		<tr class="tr">
 			<th class="head">郵便番号</th>
-			<td class="date">〒<%= @customer.postcode %></td>
+			<td class="data">〒<%= @customer.postcode %></td>
 		</tr>
 		<tr class="tr">
 			<th class="head">住所</th>
-			<td class="date"><%= @customer.address %></td>
+			<td class="data"><%= @customer.address %></td>
 		</tr>
 		<tr class="tr">
 			<th class="head">電話番号</th>
-			<td class="date"><%= @customer.phone_number %></td>
+			<td class="data"><%= @customer.phone_number %></td>
 		</tr>
 		<tr class="tr">
 			<th class="head">メールアドレス</th>
-			<td class="date"><%= @customer.email %></td>
+			<td class="data"><%= @customer.email %></td>
 		</tr>
 
 		<tr class="tr">
-			<th class="head">配送先</th>
-			<td class="date">
+			<td class="data">
 				<%= link_to addresses_path do %>
-					<button class="button">一覧を見る</button>
+					<button class="button">配送先一覧を見る</button>
 				<% end %>
 			</td>
 		</tr>
 		<tr class="tr">
-			<th class="head">注文履歴</th>
-			<td class="date">
+			<td class="data">
 				<%= link_to orders_path do %>
-					<button class="button">一覧を見る</button>
+					<button class="button">注文履歴を見る</button>
 				<% end %>
 			</td>
 		</tr>
 	</table>
-</div>
+</main>

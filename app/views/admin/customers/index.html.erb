@@ -3,23 +3,24 @@
     <h1>会員一覧</h1>
 </div>
 
-<table class="table">
+<table>
     <thead>
       <th class="head">会員ID</th>
       <th class="head">氏名</th>
       <th class="head">メールアドレス</th>
       <th class="head">ステータス</th>
+      <th class="head"></th>
     </thead>
     
     <tbody>
       <% @customers.each do |customer|%>
         <tr>
-          <td><%= customer.id%></td>
-          <td><%= customer.full_name %></td>
-          <td><%= customer.email %></td>
-          <td><%= customer.is_deleted ? '退会済み' : '有効' %></td>
-          <td>
-            <%= link_to admin_customer_path(customer) do %>
+          <td class="data"><%= customer.id%></td>
+          <td class="data"><%= customer.full_name %></td>
+          <td class="data"><%= customer.email %></td>
+          <td class="data"><%= customer.is_deleted ? '退会済み' : '有効' %></td>
+          <td class="data">
+            <%= link_to admin_customer_path(customer), class: "button" do %>
               詳細表示
             <% end %>
           </td>

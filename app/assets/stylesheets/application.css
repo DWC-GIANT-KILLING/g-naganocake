@@ -17,6 +17,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Courier, "Segoe Print", sans-serif;
 }
 
 /*共通*/
@@ -24,9 +25,28 @@
 header {
   background-color: #f39800;
   display: flex;
+  width: 100%;
+  padding:15px 0;
+  margin: 0 auto;
+}
+
+main {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.container {
+  width: 100%;
+  justify-content: center;
+  padding:15px 0;
+  margin: 0 auto;
 }
 
 h1 {
+  text-align: center;
+  width: 100%;
   font-size: 40px;
 }
 
@@ -38,6 +58,15 @@ p {
   font-size: 20px;
 }
 
+div {
+  font-size: 15px;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
+
 .image-link {
   opacity: 1;
   transition: opacity 0.3s;
@@ -48,10 +77,12 @@ p {
   opacity: 0.7; /* カーソルを合わせたときの透明度（0.7は例です） */
 }
 
+
+/*ヘッダー*/
 .top-button {
   display: inline-block;
   margin-right: 10px;
-  width: 90%;
+  width: 170px;
 }
 .top-button li {
   list-style: none;
@@ -62,7 +93,7 @@ p {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  text-align: right;
+  text-align: center;
 }
 
 .button-list li {
@@ -75,11 +106,14 @@ p {
 }
 
 .button-list li a {
+  width: 115px;
+  height: 43px;
   display: inline-block;
   padding: 10px 20px;
   background-color: #664100;
   text-decoration: none;
   color: #f39800;
+
 }
 
 .button-list li a:hover {
@@ -87,7 +121,15 @@ p {
 }
 
 .input {
-  text-align: right;
+  display: inline-block;
+  margin-top: 30px;
+}
+
+.nav {
+  display: inline-block;
+  justify-content: flex-end;
+  height: auto;
+
 }
 
 /*会員登録*/
@@ -97,11 +139,14 @@ p {
   background-color: #f5f5f5;
 }
 
-main {
-  justify-content: center;
-  align-items: center;
-  height: 50vh;
+/*商品画像*/
+
+.item {
+  width: auto;
 }
+
+
+/*フォーム*/
 
 .form {
   width: 400px;
@@ -148,12 +193,14 @@ main {
   margin-top: 20px;
 }
 
+/*ボタン*/
+
 .button {
   display: inline-block;
   margin: 10px;
   padding: 10px 20px;
   background-color: #664100;
-  text-decoration: none;
+  text-decoration-line: none;
   color: #f39800;
 }
 
@@ -173,8 +220,8 @@ main {
   line-height   : 1em;         /* 1行の高さ  */
   transition    : .3s;         /* なめらか変化 */
   box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
-  border        : 2px solid #000066;    /* 枠の指定 */
 }
+
 .submit:hover {
   opacity: 0.7;
   box-shadow    : none;        /* カーソル時の影消去 */
@@ -182,7 +229,11 @@ main {
   /*background    : #ffffff;     /* 文字色     */
 }
 
-/*テーブル*/
+.image-form {
+  display: none;
+}
+
+
 
 .info {
   display: flex;
@@ -198,6 +249,7 @@ main {
 
 }
 
+/*テーブル*/
 .table {
   display: flex;
   justify-content: center;
@@ -208,7 +260,8 @@ main {
 }
 
 .head {
-  background-color: #f2f2f2;
+  background-color: #664100;
+  color: #f39800;
   padding: 10px;
   text-align: left;
 }
